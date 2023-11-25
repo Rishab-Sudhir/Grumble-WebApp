@@ -1,19 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tinder For Restaurants</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <h3>Welcome to Tinder for Restaurants</h3>
-
-    <button type="submit"> <a href="/signup">Sign Up</a></button>
-    <button type="submit"> <a href="/signin">Sign In</a></button>
-    <button type="submit"> <a href="/signout">Sign Out</a></button>
-
-	<script src="index.js"></script>
-  </body>
+<html>
+<head>
+  <link rel="stylesheet" href="globals.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <!-- font link for "Tinder For Restaurants" header -->
+</head>
+<body>
+  <div class="login">
+    <div class="overlap">
+      <div class="form">
+        <div class="username overlap-group">
+          <img class="img" src="img/user.png" alt="User Icon" />
+          <!-- Add an input tag for username -->
+          <input type="text" id="username" name="username" placeholder="Username" class="input" />
+        </div>
+        <div class="password overlap-group">
+          <img class="img" src="img/lock.png" alt="Lock Icon" />
+          <!-- Add an input tag for password -->
+          <input type="password" id="password" name="password" placeholder="Password" class="input" />
+        </div>
+        <button class="login-btn">
+          <div class="div">
+            <img class="rectangle" src="img/rectangle.png" alt="Rectangle Shape" />
+            <div class="sign-up">LOGIN</div>
+          </div>
+        </button>
+      </div>
+      <div class="text-wrapper-2">Tinder For Restaurants</div>
+    </div>
+  </div>
+</body>
 </html>
+
+
