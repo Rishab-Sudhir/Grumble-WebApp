@@ -18,16 +18,20 @@ def signup(request):
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
 
-    myuser = User.obejects.create_user(username, email, pass1)
+        # Checking if both passwords match
+        if pass1 == pass2:
+            # If passwords match, continue with user creation
+            myuser = User.objects.create_user(username, email, pass1)
+            myuser.first_name = fname
+            myuser.last_name = lname
+            myuser.save()
 
-    myuser.first_name = fname
-    myuser.last_name = lname
-
-    myuser.save()
-
-    messages.success(request, "Your account has been successfully created!")
-
-    return redirect('signin')
+            messages.success(request, "Your account has been successfully created!")
+            return redirect('signin')
+        else:
+            # If passwords do not match, return to the signup page with a message
+            messages.error(request, "Passwords do not match!")
+            return render(request, "authentication/signup.html")
 
     return render(request, "authentication/signup.html")
 
