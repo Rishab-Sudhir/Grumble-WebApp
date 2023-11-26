@@ -12,8 +12,10 @@
     <h3> Sign Up </h3>
 
 <!-- csrf token is django specific for forms-->
-    {% csrf_token %}
+
     <form action="/signup" method="post"> 
+    {% csrf_token %}
+
         <label for="">Username</label>
         <input type="text" id="username" name="username" placeholder="Create a username (only letters and numbers)" Required>
         <br>
