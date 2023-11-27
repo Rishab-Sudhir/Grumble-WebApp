@@ -1,0 +1,151 @@
+:root {
+  --dark-blue: #2148c0;
+  --white: #ffffff;
+  --padding: 12px;
+  --font-size-16: 16px;
+  --font-size-14: 14px;
+  --border-size-1: 1px;
+  --br-radius-4: 4px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: url(./assets/bg-curve.svg) no-repeat 100% 0 / contain,
+    url(./assets/bg-circle-g.svg) no-repeat -25% 100%/50% 50%, var(--dark-blue);
+  min-height: 100vh;
+}
+  .login .overlap {
+    position: relative;
+    background-image: url(./img/BG.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .login .form {
+    position: absolute;
+    width: 300px;
+    height: 110px;
+    top: 230px;
+    left: 522px;
+  }
+  
+  .login .username {
+    position: absolute;
+    width: 302px;
+    height: 45px;
+    top: 0;
+    left: 0;
+  }
+  
+  
+  .login .text-wrapper {
+    position: absolute;
+    top: 12px;
+    left: 50px;
+    font-family: "Montserrat-Light", Helvetica;
+    font-weight: 300;
+    color: #ffffff;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 20px;
+    white-space: nowrap;
+  }
+  
+  .login .img {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 12px;
+    left: 11px;
+  }
+  
+  .login .password {
+    position: absolute;
+    width: 302px;
+    height: 45px;
+    top: 65px;
+    left: 0;
+  }
+  
+  .login .login-btn {
+    all: unset;
+    box-sizing: border-box;
+    position: absolute;
+    top: 150px; /* Adjust this value so the button sits below the password input */
+    width: 522px; /* Align this with your form elements */
+}
+  
+  .login .div {
+    position: relative;
+    width: 308px;
+    height: 53px;
+    left: -4px;
+  }
+  
+  .login .rectangle {
+    position: absolute;
+    width: 308px;
+    height: 53px;
+    top: 0;
+    left: 0;
+  }
+
+  .login .sign-up {
+    position: absolute;
+    top: 13px;
+    left: 119px;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #2148c0;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 20px;
+    white-space: nowrap;
+  }
+  .login .overlap-group .input {
+    position: absolute;
+    top: 12px;
+    left: 50px; /* Adjust as needed to fit next to the icon */
+    width: 250px; /* Adjust as needed */
+    height: 20px; /* Adjust as needed */
+    border: none;
+    background: transparent;
+    color: white;
+    font-family: "Montserrat-Light", Helvetica, sans-serif;
+    font-size: 14px;
+  }
+  
+  /* Change focus color */
+  .login .overlap-group .input:focus {
+    outline: none;
+    border-bottom: 1px solid #ffffff; /* Adds a bottom border on focus */
+  }
+  
+  .login .text-wrapper-2 {
+    position: absolute;
+    top: 137px;
+    left: 421px;
+    font-family: "Archivo Black";
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  .navigation-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.navigation-link a {
+    color: #007bff;
+    text-decoration: none;
+}
