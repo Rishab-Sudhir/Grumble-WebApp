@@ -9,4 +9,8 @@ Maha - Frontend
 
 Lincoln - Intergration
 
-Uses basic django (in python) for sign in flow and email authorization. Front end is done in html and css.
+Progress so far:
+
+Used basic django (in python) for sign in flow and email authorization. 
+
+Currently working on front end using html and css.
