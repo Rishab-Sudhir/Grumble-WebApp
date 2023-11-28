@@ -5,7 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tinder For Restaurants</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="">
+    <style>
+       /* Basic Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+  /* Root Variables */
+  :root {
+      --dark-blue: #2148c0;
+      --white: #ffffff;
+      --padding: 12px;
+      --font-size-30: 30px;
+      --font-size-14: 14px;
+      --border-size-1: 1px;
+      --br-radius-4: 4px;
+  }
+
+  /* Background and Alignment */
+  body, html {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--dark-blue); /* Generic background color */
+      background: url(./assets/bg-curve.svg) no-repeat 100% 0 / contain,
+       url(./assets/bg-circle-g.svg) no-repeat -25% 100%/50% 50%, var(--dark-blue);
+      font-family: 'Archivo Black', sans-serif;
+      
+  }
+
+  /* Alert Box Styling */
+  .alert {
+      width: 80%;
+      margin: 10px auto;
+      padding: var(--padding);
+      border-radius: var(--br-radius-4);
+      border: var(--border-size-1) solid #ccc;
+      background-color: var(--white);
+      text-align: center;
+  }
+
+  /* Title Styling */
+  h3 {
+      text-align: center;
+      color: var(--white);
+      font-size: var(--font-size-30);
+      margin-bottom: 40px; /* Add space below the title */
+  }
+
+  /* Button Container */
+  .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px; /* Space between buttons */
+  }
+
+  /* Button Styling */
+  button {
+      padding: var(--padding);
+      border: none;
+      border-radius: var(--br-radius-4);
+      background-color: var(--white);
+      color: var(--dark-blue);
+      cursor: pointer;
+      text-decoration: none;
+  }
+
+  /* Link Styling */
+  button a {
+      color: var(--dark-blue);
+      text-decoration: none;
+  }
+  /* Additional Styling - Customize as Needed */
+  /* Add any additional styling you need here */
+    </style>
   </head>
   <body>
 
@@ -18,9 +96,9 @@
         </div>
         {% endfor %}
 
-
-        <h3>Welcome to Tinder for Restaurants</h3>
- 
+        <div>
+        <h3>Welcome to Tinder for Restaurants!</h3>
+        <div>
 
         {% if user.is_authenticated %}
 
@@ -29,16 +107,13 @@
         <button type="submit"> <a href="/signout">Sign Out</a></button>
 
         {% else %}
-        <button type="submit"> <a href="/signup">Sign Up</a></button>
-        <button type="submit"> <a href="/signin">Sign In</a></button>
+        <div class="button-container">
+          <button type="submit"><a href="/signup">Sign Up</a></button>
+          <button type="submit"><a href="/signin">Sign In</a></button>
+        </div>
         {% endif %}
 
 	    <script src=""></script>
   </body>
 </html>
-<<<<<<< HEAD
->>>>>>> 547ee2f (Implemented sign in and sign out functionality)
-=======
 
-
->>>>>>> d9be585 (initial signup.html and index.html (login.html))
