@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def get_location(request):
+    # logic to get the location or show location-related content
+    return render(request, 'location/get_location.html')
