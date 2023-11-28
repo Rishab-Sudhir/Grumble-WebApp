@@ -20,7 +20,7 @@
         <div class="search-container">
             <h1>LOCATION</h1>
             <!-- Start of form -->
-            <form method="post" action="{% url 'search_restaurants' %}"> 
+            <form action="/search_restaurants" method="post"> 
                 {% csrf_token %}
                 <div class="input-group">
                     <label for="search-radius">Radius for restaurant search:</label>
