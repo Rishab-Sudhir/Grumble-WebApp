@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 
 def get_location(request):
     # logic to get the location or show location-related content
-    return render(request, 'Location/LocationMap.html')
+    return render(request, 'location/LocationMap.html')
 
 def search_restaurants(request):
     pass
