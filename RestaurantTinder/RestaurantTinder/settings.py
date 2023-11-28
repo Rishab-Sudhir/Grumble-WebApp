@@ -37,6 +37,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "authentication",  # authentication app
+    "location",        # new location app
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
