@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Finder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="location-search-container">
+        <div class="map-container">
+            <!-- Embed a map using a service like Google Maps or OpenStreetMap -->
+            <script async defer
+             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPvMtM8aidGPvn1jzVPWzjZ0faHidQR-0&callback=initMap">
+            </script>
+            <!-- Placeholder for the map -->
+            <div id="map"></div>
+        </div>
+        <div class="search-container">
+            <h1>LOCATION</h1>
+            <!-- Start of form -->
+            <form method="post" action="{% url 'search_restaurants' %}">
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="search-radius">Radius for restaurant search:</label>
+                    <input type="number" name="radius" id="search-radius" placeholder="Enter radius in miles" min="1">
+                    <span class="unit">mi</span>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="location" id="location-input" placeholder="Enter your location">
+                </div>
+                <button type="submit" id="search-button">Continue For More Filters</button>
+            </form>
+            <!-- End of form -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
