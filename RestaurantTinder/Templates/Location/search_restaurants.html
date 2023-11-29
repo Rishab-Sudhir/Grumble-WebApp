@@ -1,5 +1,39 @@
-{% autoescape off %}
-
-filler
-
-{% endautoescape %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Restaurants</title>
+    <!-- Add links to your CSS files here -->
+</head>
+<body>
+    <div class="container">
+        <h1>Search for Restaurants</h1>
+        <form method="post" action="{% url 'search_restaurants' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select name="category" id="category">
+                    {% for alias, title in form.fields.category.choices %}
+                        <option value="{{ alias }}">{{ title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <select name="price" id="price">
+                    {% for value, label in form.fields.price.choices %}
+                        <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="open_now">Open Now:</label>
+                <input type="checkbox" name="open_now" id="open_now">
+            </div>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <!-- Add links to your JavaScript files here -->
+</body>
+</html>

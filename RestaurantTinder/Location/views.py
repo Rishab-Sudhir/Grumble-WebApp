@@ -1,21 +1,19 @@
 from django.shortcuts import redirect, render
-
+from .forms import RestaurantSearchForm
 
 def get_location(request):
     # logic to get the location or show location-related content
     return render(request, 'location/LocationMap.html')
 
 def search_restaurants(request):
-    pass
-#    if request.method == 'POST':
-#       # Extract data from form submission
-#        radius = request.POST.get('radius')
-#        location = request.POST.get('location')
-        
-        # You can now use the 'radius' and 'location' variables to make your API call and gather data
+    if request.method == 'POST':
+        form = RestaurantSearchForm(request.POST)
+        if form.is_valid():
+            # Use form.cleaned_data to access the validated data
+            # Perform the search with the Yelp API using the form data
+            # Render the results or redirect as necessary
+            pass  # Replace with actual search logic and response
+    else:
+        form = RestaurantSearchForm()
 
-        # After getting the data, you would typically render a results page
-#        return # render(request, 'Location/ResultsPage.html', {'data': data})
-#    else:
-        # If it's not a POST request, redirect back to the get_location view
-#        return # redirect('get_location')
+    return render(request, 'location/search_restaurants.html', {'form': form})
