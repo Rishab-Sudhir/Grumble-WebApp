@@ -8,19 +8,20 @@
 </head>
 
 <body>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message:</strong>{{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true"> &times; </span>
+    </button>
+    </div>
+    {% endfor %}
+
     <div class="location-search-container">
-        <div class="map-container">
-            <!-- Embed a map using a service like Google Maps or OpenStreetMap -->
-            <script async defer
-             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPvMtM8aidGPvn1jzVPWzjZ0faHidQR-0&callback=initMap">
-            </script>
-            <!-- Placeholder for the map -->
-            <div id="map"></div>
-        </div>
         <div class="search-container">
             <h1>LOCATION</h1>
             <!-- Start of form -->
-            <form method="post" action="{% url 'search_restaurants' %}">
+            <form method="post" action="{% url 'get_location' %}">
                 {% csrf_token %}
                 <div class="input-group">
                     <label for="search-radius">Radius for restaurant search:</label>
