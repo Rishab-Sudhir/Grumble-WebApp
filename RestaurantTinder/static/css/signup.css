@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
-    <link href="https://fonts.googleapis.com/css2?family=A=Red+Hat+Display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
-  </head>
-  <style>
-     * {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -51,7 +39,7 @@
     font-size: var(--font-size-small);
   }
 
-  /* Header Styling with Line */
+  /* Header Styling */
 
   /* Box-related styles */
   .header-container{
@@ -92,7 +80,7 @@
   }
 
   form {
-    width: 300px;
+    width: 500px;
     background: var(--white);
     padding: 10px;
     border-radius: var(--border-radius);
@@ -105,8 +93,9 @@
     color: var(--primary-color);
   }
 
-  form input[type="text"],
-  form input[type="password"] {
+form input[type="text"],
+  form input[type="password"],
+  form input[type="email"]  {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -114,52 +103,16 @@
     border-radius: var(--border-radius);
   }
 
-  form button[type="submit"] {
-    width: 100%;
-    padding: var(--alert-padding);
-    border: none;
-    border-radius: var(--border-radius);
-    background-color: var(--primary-color);
-    color: var(--white);
-    cursor: pointer;
-  }
+form button[type="submit"] {
+  width: 100%;
+  padding: var(--alert-padding);
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
+  color: var(--white);
+  cursor: pointer;
+}
 
-  form button[type="submit"]:hover {
-    background-color: #434e73;
-  }
-  </style>
-  <body>
-
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-    <strong>Message:</strong>{{ message }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true"> &times; </span>
-    </button>
-    </div>
-    {% endfor %}
-
-    <div class="header-container">
-    <h3> Tinder For Restaurants </h3>
-    </div>
-
-
-    <div class="spacer"></div> 
-<!-- csrf token is django specific for forms-->
-    <div>
-      <form action="/signin" method="post"> 
-          {% csrf_token %}
-          <h2> Sign In </h2>
-          <label for="">Username</label>
-          <input type="text" id="username" name="username" placeholder="Enter Your Username" Required>
-          <br>
-          <label for="">Password</label>
-          <input type="password" id="pass1" name="pass1" placeholder="Enter Your Password" Required>
-          <br>
-          <button type="submit">Sign In</button>
-      </form>
-    </div>
-
-    <script src="{% static 'js/signin.js' %}"></script>
-  </body>
-</html>
+form button[type="submit"]:hover {
+  background-color: #434e73;
+}

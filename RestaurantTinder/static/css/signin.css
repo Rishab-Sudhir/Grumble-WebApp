@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Root Variables */
+:root {
+    --primary-color: #2148c0;
+    --white: #ffffff;
+    --alert-padding: 12px;
+    --font-size-large: 30px;
+    --font-size-small: 14px;
+    --border-size: 1px;
+    --border-radius: 4px;
+}
+
+/* Background and Layout */
+body, html {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    background: var(--white);
+    padding: 20px;
+}
+
+/* Alert Messages */
+.alert {
+    width: 100%;
+    padding: var(--alert-padding);
+    margin-bottom: 15px;
+    border: var(--border-size) solid var(--white);
+    border-radius: var(--border-radius);
+    background-color: var(--white);
+    color: var(--primary-color);
+    font-size: var(--font-size-small);
+}
+
+/* Header Styling with Line */
+.header-container {
+    background-color: var(--primary-color);
+    border-radius: 0px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+}
+
+.header-container h3 {
+    display: block;
+    font-size: var(--font-size-large);
+    color: #ffffff;
+    text-align: center;
+}

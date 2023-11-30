@@ -1,0 +1,106 @@
+/* Basic Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Root Variables */
+:root {
+    --dark-blue: #2148c0;
+    --white: #ffffff;
+    --padding: 12px;
+    --font-size-30: 30px;
+    --font-size-14: 14px;
+    --border-size-1: 1px;
+    --br-radius-4: 4px;
+}
+
+/* Background and Alignment */
+body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: var(--dark-blue); Generic background color */
+    background: url(../assets/bg-curve.svg) no-repeat 100% 0 / contain,
+                url(../assets/bg-circle-g.svg) no-repeat -25% 100%/50% 50%, var(--dark-blue);
+    min-height: 100vh;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+/* Box-related styles */
+.header-container {
+    background: transparent;
+    background-color: var(--primary-color);
+    border-radius: 0px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+}
+
+/* Text-related styles */
+.header-container h3 {
+    background: transparent;
+    display: block;
+    font-size: var(--font-size-large);
+    color: #ffffff;
+    text-align: center;
+    line-height: 50px;
+}
+
+/* Spacer Styling */
+.spacer {
+    background: transparent;
+    height: 100px;
+    width: 100%;
+}
+
+/* Alert Box Styling */
+.alert {
+    width: 80%;
+    margin: 10px auto;
+    padding: var(--padding);
+    border-radius: var(--br-radius-4);
+    border: var(--border-size-1) solid #ccc;
+    background-color: var(--white);
+    text-align: center;
+}
+
+/* Title Styling */
+h3 {
+    align-items: center;
+    color: var(--white);
+    font-size: var(--font-size-30);
+    margin-bottom: 40px;
+}
+
+/* Button Container */
+.button-container {
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Button Styling */
+button {
+    padding: var(--padding);
+    border: none;
+    border-radius: var(--br-radius-4);
+    background-color: var(--white);
+    color: var(--dark-blue);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Link Styling */
+button a {
+    color: var(--dark-blue);
+    text-decoration: none;
+}
+/* Set the background for specific divs to a solid color or transparent */
