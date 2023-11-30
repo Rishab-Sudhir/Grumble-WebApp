@@ -7,7 +7,7 @@ all this information we then hit the yelp api to get a list of retaurants in the
 
 Rishab - Backend (using DJANGO Python)
 
-       - API key is visible for simplicities sake, but in a prod environment this would             naturally be hidden.
+API key is visible for simplicities sake, but in a prod environment this would naturally be hidden.
 
 Maha - Frontend (Html CSS)
 
