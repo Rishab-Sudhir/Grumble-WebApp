@@ -6,6 +6,7 @@ we hit the google maps api to get the longitude and latitude for a users locatio
 all this information we then hit the yelp api to get a list of retaurants in the vicinity. We then display these restaurants in a tinder like fashion.
 
 Rishab - Backend (using DJANGO Python)
+
        - API key is visible for simplicities sake, but in a prod environment this would             naturally be hidden.
 
 Maha - Frontend (Html CSS)
