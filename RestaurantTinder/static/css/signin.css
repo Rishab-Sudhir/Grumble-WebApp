@@ -1,12 +1,12 @@
-* {
+  * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-}
+  }
 
-/* Root Variables */
-:root {
+  /* Root Variables */
+  :root {
     --primary-color: #2148c0;
     --white: #ffffff;
     --alert-padding: 12px;
@@ -14,10 +14,10 @@
     --font-size-small: 14px;
     --border-size: 1px;
     --border-radius: 4px;
-}
+  }
 
-/* Background and Layout */
-body, html {
+  /* Background and Layout */
+  body, html {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -25,10 +25,10 @@ body, html {
     justify-content: start;
     background: var(--white);
     padding: 20px;
-}
+  }
 
-/* Alert Messages */
-.alert {
+  /* Alert Messages */
+  .alert {
     width: 100%;
     padding: var(--alert-padding);
     margin-bottom: 15px;
@@ -37,23 +37,81 @@ body, html {
     background-color: var(--white);
     color: var(--primary-color);
     font-size: var(--font-size-small);
-}
+  }
 
-/* Header Styling with Line */
-.header-container {
-    background-color: var(--primary-color);
-    border-radius: 0px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 50px;
-}
+  /* Header Styling with Line */
 
-.header-container h3 {
+  /* Box-related styles */
+  .header-container{
+      background-color: var(--primary-color) ;
+      border-radius: 0px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50px; /* Fixed height, so padding-bottom is likely not needed */
+      /* Padding might need to be adjusted or removed depending on your layout */
+  }
+
+  /* Text-related styles */
+  .header-container h3{
+      display: block; /* Make span behave like a block element */
+      font-size: var(--font-size-large);
+      color: #ffffff;
+      text-align: center;
+      /* Center the text vertically if the box has a fixed height */
+      line-height: 50px; /* Should match the height of the container */
+  }
+
+   /* Spacer Styling */
+   .spacer {
+    height: 100px; /* Adjust this value to increase or decrease the space */
+    width: 100%;
+  }
+
+  /* Sign In Form Styling */
+  form h2 {
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  form {
+    width: 300px;
+    background: var(--white);
+    padding: 10px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); 
+  }
+
+  form label {
     display: block;
-    font-size: var(--font-size-large);
-    color: #ffffff;
-    text-align: center;
-}
+    margin-bottom: 5px;
+    color: var(--primary-color);
+  }
+
+  form input[type="text"],
+  form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: var(--border-size) solid var(--primary-color);
+    border-radius: var(--border-radius);
+  }
+
+  form button[type="submit"] {
+    width: 100%;
+    padding: var(--alert-padding);
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    color: var(--white);
+    cursor: pointer;
+  }
+
+  form button[type="submit"]:hover {
+    background-color: #434e73;
+  }

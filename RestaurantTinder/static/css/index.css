@@ -24,15 +24,16 @@ body, html {
     justify-content: center;
     align-items: center;
     /* background: var(--dark-blue); Generic background color */
+
     background: url(../assets/bg-curve.svg) no-repeat 100% 0 / contain,
-                url(../assets/bg-circle-g.svg) no-repeat -25% 100%/50% 50%, var(--dark-blue);
-    min-height: 100vh;
+      url(../assets/bg-circle-g.svg) no-repeat -25% 100%/50% 50%, var(--dark-blue);
     font-family: 'Archivo Black', sans-serif;
+    min-height: 100px;
+
 }
 
 /* Box-related styles */
 .header-container {
-    background: transparent;
     background-color: var(--primary-color);
     border-radius: 0px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -45,7 +46,6 @@ body, html {
 
 /* Text-related styles */
 .header-container h3 {
-    background: transparent;
     display: block;
     font-size: var(--font-size-large);
     color: #ffffff;
@@ -55,7 +55,6 @@ body, html {
 
 /* Spacer Styling */
 .spacer {
-    background: transparent;
     height: 100px;
     width: 100%;
 }
@@ -72,8 +71,9 @@ body, html {
 }
 
 /* Title Styling */
-h3 {
+.welcome h3 {
     align-items: center;
+    justify-content: center;
     color: var(--white);
     font-size: var(--font-size-30);
     margin-bottom: 40px;
@@ -81,7 +81,6 @@ h3 {
 
 /* Button Container */
 .button-container {
-    background: transparent;
     display: flex;
     justify-content: center;
     gap: 20px;
