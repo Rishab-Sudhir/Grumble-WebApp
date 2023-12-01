@@ -30,30 +30,37 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     width: 90%;
     max-width: 600px;
-    padding: 20px;
     margin: 20px auto;
     text-align: center;
-    width:fit-content;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.search-container h1 {
-    color: var(--secondary-color);
-    margin-bottom: 20px;
-    font-size: 2rem;
+#map {
+    height: 400px;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+/* Adjust input group for better alignment */
 .input-group {
+    margin-top: 20px;
     margin-bottom: 15px;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: space-between;
 }
 
 .input-group label {
     color: white;
-    margin-right: 10px;
     font-weight: bold;
-    width:fit-content;
+    margin-right: 10px;
 }
 
 .input-group input[type="number"],
@@ -62,13 +69,13 @@ body {
     border: 1px solid var(--medium-gray);
     border-radius: 4px;
     font-size: 1rem;
+    flex-grow: 1; /* Allows input to take available space */
 }
 
 .unit {
     color: white;
     margin-left: 5px;
     font-weight: bold;
-    width:fit-content;
 }
 
 #search-button {

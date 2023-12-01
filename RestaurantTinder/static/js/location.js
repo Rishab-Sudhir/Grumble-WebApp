@@ -1,34 +1,67 @@
+let map, infoWindow, marker;
+
 function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 8,
-        center: { lat: -34.397, lng: 150.644 }
+    // Set a default center for the map
+    const defaultLocation = { lat: -34.397, lng: 150.644 };
+
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 6,
+        center: defaultLocation,
     });
 
-    var geocoder = new google.maps.Geocoder();
-    var form = document.getElementById('location-form'); // Ensure you have the correct form ID
+    infoWindow = new google.maps.InfoWindow();
 
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        geocodeAddress(geocoder, map, form);
+    // Try to get user's location
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const userLocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                };
+                map.setCenter(userLocation);
+                infoWindow.setPosition(userLocation);
+                infoWindow.setContent('<div style="color: black;">Your location!</div>');
+                infoWindow.open(map);
+            },
+            () => {
+                handleLocationError(true, infoWindow, map.getCenter());
+            }
+        );
+    } else {
+        // Browser doesn't support Geolocation, use default location
+        handleLocationError(false, infoWindow, defaultLocation);
+    }
+
+    // Add click event listener to the map
+    map.addListener('click', function(e) {
+        placeMarkerAndPanTo(e.latLng, map);
     });
 }
 
-function geocodeAddress(geocoder, resultsMap, form) {
-    var address = document.getElementById('location-input').value;
-    geocoder.geocode({'address': address}, function(results, status) {
-        if (status === 'OK') {
-            resultsMap.setCenter(results[0].geometry.location);
-            new google.maps.Marker({
-                map: resultsMap,
-                position: results[0].geometry.location
-            });
-            // You can now submit the form or make an AJAX call with the geocoded coordinates
-            // form.submit(); // Uncomment to submit the form
-        } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-        }
-    });
+// Function to update the 'Enter your location' input field
+function updateLocationInput(latLng) {
+    const latLngInput = document.getElementById('location-input'); // Replace with your input field ID
+    latLngInput.value = latLng.lat() + ', ' + latLng.lng();
 }
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(
+        browserHasGeolocation
+            ? 'Error: The Geolocation service failed.'
+            : 'Error: Your browser does not support geolocation.'
+    );
+    infoWindow.open(map);
+}
+
+// The geocodeLatLng function (and other functions, if any) should be declared outside initMap
+function geocodeLatLng(geocoder, map, latLng, inputField) {
+    // Function implementation
+    // ...
+}
+
+window.initMap = initMap;
 
 // DOM Content Loaded event handling
 document.addEventListener('DOMContentLoaded', function() {
@@ -60,5 +93,4 @@ document.addEventListener('DOMContentLoaded', function() {
         showAlert(firstMessageContent);
         initialMessages[0].style.display = 'none'; // Hide the initial message from main content
     }
-    
 });
