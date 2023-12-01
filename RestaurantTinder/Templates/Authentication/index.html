@@ -1,39 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tinder For Restaurants</title>
-    <link rel="stylesheet" href="">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
   </head>
   <body>
 
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-        <strong>Message:</strong>{{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true"> &times; </span>
-        </button>
+    <!-- Alert Box (Initially Hidden) -->
+    <div id="alert-box" class="alert" style="display: none;">
+      <strong>Message:</strong> <span id="alert-message">Alert Message Here</span>
+      <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true"> &times; </span>
+      </button>
+  </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          <span class="message-content">{{ message }}</span>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true"> &times; </span>
+          </button>
+      </div>
+      {% endfor %}
+
+        <div class="header-container">
+            <h3> Tinder For Restaurants </h3>
         </div>
-        {% endfor %}
-
-
-        <h3>Welcome to Tinder for Restaurants</h3>
- 
 
         {% if user.is_authenticated %}
-
-        <h3> Hello {{ fname }}</h3>
-        <h4>You're Successfully Logged In</h4>
-        <button type="submit"> <a href="location/get_location">Begin Search</a></button>
-        <button type="submit"> <a href="/signout">Sign Out</a></button>
-
+        <div class="email-confirmed">
+          <div class="welcome">
+            <h3>Hello {{ fname }}!</h2>
+          </div>
+  
+            <div class="button-container">
+                <button type="submit"> <a href="location/get_location">Begin Search</a></button>
+                <button type="submit"> <a href="/signout">Sign Out</a></button>
+            </div>
+        </div>
         {% else %}
-        <button type="submit"> <a href="/signup">Sign Up</a></button>
-        <button type="submit"> <a href="/signin">Sign In</a></button>
+          <div class="welcome">
+            <h3>Welcome to Tinder for Restaurants!</h3>
+          </div>
+        <div class="button-container">
+            <button type="submit"><a href="/signup">Sign Up</a></button>
+            <button type="submit"><a href="/signin">Sign In</a></button>
+        </div>
         {% endif %}
+    </div>
 
-	    <script src=""></script>
+    <script src="{% static 'js/main.js' %}"></script>
   </body>
 </html>
