@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Finder</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <link rel="stylesheet" href="{% static 'css/locationmap.css' %}">
 
+</head>
 <body>
-    {% for message in messages %}
+      <!-- Alert Box (Initially Hidden) -->
+    <div id="alert-box" class="alert" style="display: none;">
+        <strong>Message:</strong> <span id="alert-message">Alert Message Here</span>
+        <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true"> &times; </span>
+        </button>
+    </div>
+  
+      <!-- Main Content -->
+      <div id="main-content">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <span class="message-content">{{ message }}</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"> &times; </span>
+            </button>
+        </div>
+        {% endfor %}
+
+
+
+
+    <!-- {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
     <strong>Message:</strong>{{ message }}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -17,12 +40,26 @@
     </div>
     {% endfor %}
 
+
+
+    <script>
+                        (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+                          key: "AIzaSyBvnv5Y_syGDIt6LbOCHzfBWiObd7Rv-WU",
+                          v: "weekly",
+                          // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+                          // Add other bootstrap parameters as needed, using camel case.
+                        });
+                      </script>
+     -->
+
+
     <div class="location-search-container">
         <div class="search-container">
             <h1>LOCATION</h1>
             <!-- Start of form -->
             <form method="post" action="{% url 'get_location' %}">
                 {% csrf_token %}
+                <div id="map" style="height: 400px; width: 100%;"></div>
                 <div class="input-group">
                     <label for="search-radius">Radius for restaurant search:</label>
                     <input type="number" name="radius" id="search-radius" placeholder="Enter radius in miles" min="1">
@@ -35,7 +72,9 @@
             </form>
             <!-- End of form -->
         </div>
-    </div>
-    <script src="script.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvnv5Y_syGDIt6LbOCHzfBWiObd7Rv-WU&callback=initMap"></script>
+    <script src="{% static 'js/location.js' %}"></script>
 </body>
 </html>
+
+

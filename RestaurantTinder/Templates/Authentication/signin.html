@@ -7,127 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HTML 5 Boilerplate</title>
     <link href="https://fonts.googleapis.com/css2?family=A=Red+Hat+Display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/signin2.css' %}">
   </head>
-  <style>
-     * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-  }
-
-  /* Root Variables */
-  :root {
-    --primary-color: #2148c0;
-    --white: #ffffff;
-    --alert-padding: 12px;
-    --font-size-large: 30px;
-    --font-size-small: 14px;
-    --border-size: 1px;
-    --border-radius: 4px;
-  }
-
-  /* Background and Layout */
-  body, html {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-    background: var(--white);
-    padding: 20px;
-  }
-
-  /* Alert Messages */
-  .alert {
-    width: 100%;
-    padding: var(--alert-padding);
-    margin-bottom: 15px;
-    border: var(--border-size) solid var(--white);
-    border-radius: var(--border-radius);
-    background-color: var(--white);
-    color: var(--primary-color);
-    font-size: var(--font-size-small);
-  }
-
-  /* Header Styling with Line */
-
-  /* Box-related styles */
-  .header-container{
-      background-color: var(--primary-color) ;
-      border-radius: 0px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50px; /* Fixed height, so padding-bottom is likely not needed */
-      /* Padding might need to be adjusted or removed depending on your layout */
-  }
-
-  /* Text-related styles */
-  .header-container h3{
-      display: block; /* Make span behave like a block element */
-      font-size: var(--font-size-large);
-      color: #ffffff;
-      text-align: center;
-      /* Center the text vertically if the box has a fixed height */
-      line-height: 50px; /* Should match the height of the container */
-  }
-
-   /* Spacer Styling */
-   .spacer {
-    height: 100px; /* Adjust this value to increase or decrease the space */
-    width: 100%;
-  }
-
-  /* Sign In Form Styling */
-  form h2 {
-    color: var(--primary-color);
-    font-size: 20px;
-    margin-bottom: 20px;
-    text-align: left;
-    font-weight: 400;
-  }
-
-  form {
-    width: 300px;
-    background: var(--white);
-    padding: 10px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); 
-  }
-
-  form label {
-    display: block;
-    margin-bottom: 5px;
-    color: var(--primary-color);
-  }
-
-  form input[type="text"],
-  form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: var(--border-size) solid var(--primary-color);
-    border-radius: var(--border-radius);
-  }
-
-  form button[type="submit"] {
-    width: 100%;
-    padding: var(--alert-padding);
-    border: none;
-    border-radius: var(--border-radius);
-    background-color: var(--primary-color);
-    color: var(--white);
-    cursor: pointer;
-  }
-
-  form button[type="submit"]:hover {
-    background-color: #434e73;
-  }
-  </style>
   <body>
 
     <!-- Main Content -->
@@ -141,7 +23,7 @@
     {% endfor %}
 
     <div class="header-container">
-    <h3> Tinder For Restaurants </h3>
+      <h3> Tinder For Restaurants </h3>
     </div>
 
 
@@ -158,6 +40,9 @@
           <input type="password" id="pass1" name="pass1" placeholder="Enter Your Password" Required>
           <br>
           <button type="submit">Sign In</button>
+          <div class="navigation-link">
+            Don't have an account? <a href="signup">Sign Up</a>
+        </div>
       </form>
     </div>
 

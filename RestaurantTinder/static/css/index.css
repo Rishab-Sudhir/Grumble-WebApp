@@ -14,6 +14,8 @@
     --font-size-30: 30px;
     --font-size-14: 14px;
     --border-size-1: 1px;
+    --font-size-large: 30px;
+    --font-size-small: 14px;
     --br-radius-4: 4px;
 }
 
@@ -33,24 +35,26 @@ body, html {
 }
 
 /* Box-related styles */
-.header-container {
-    background-color: var(--primary-color);
+.header-container{
+    background-color: var(--primary-color) ;
     border-radius: 0px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 50px;
+    height: 50px; /* Fixed height, so padding-bottom is likely not needed */
+    /* Padding might need to be adjusted or removed depending on your layout */
 }
 
 /* Text-related styles */
-.header-container h3 {
-    display: block;
-    font-size: var(--font-size-large);
+.header-container h3{
+    display: block; /* Make span behave like a block element */
+    font-size: 30px;
     color: #ffffff;
     text-align: center;
-    line-height: 50px;
+    /* Center the text vertically if the box has a fixed height */
+    line-height: 50px; /* Should match the height of the container */
 }
 
 /* Spacer Styling */
@@ -61,13 +65,14 @@ body, html {
 
 /* Alert Box Styling */
 .alert {
-    width: 80%;
+    width:fit-content;
     margin: 10px auto;
     padding: var(--padding);
     border-radius: var(--br-radius-4);
     border: var(--border-size-1) solid #ccc;
     background-color: var(--white);
     text-align: center;
+
 }
 
 /* Title Styling */
@@ -75,7 +80,7 @@ body, html {
     align-items: center;
     justify-content: center;
     color: var(--white);
-    font-size: var(--font-size-30);
+    font-size: 24px;
     margin-bottom: 40px;
 }
 

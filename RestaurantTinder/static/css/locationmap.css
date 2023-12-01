@@ -1,0 +1,107 @@
+:root {
+    --primary-color: #35424a;  /* Dark Slate Gray */
+    --secondary-color: #e8491d; /* Coral */
+    --tertiary-color: #f4f4f4;  /* Light Gray */
+    --light-gray: #f4f4f4;
+    --medium-gray: #ddd;
+    --dark-gray: #333;
+    --hover-blue: #003d82;
+    --border-radius: 8px;
+    --border-color: #ddd;
+    --font-family: 'Arial', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--tertiary-color);
+}
+
+.location-search-container {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    margin: 20px auto;
+    text-align: center;
+    width:fit-content;
+}
+
+.search-container h1 {
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.input-group label {
+    color: white;
+    margin-right: 10px;
+    font-weight: bold;
+    width:fit-content;
+}
+
+.input-group input[type="number"],
+.input-group input[type="text"] {
+    padding: 10px;
+    border: 1px solid var(--medium-gray);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.unit {
+    color: white;
+    margin-left: 5px;
+    font-weight: bold;
+    width:fit-content;
+}
+
+#search-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#search-button:hover {
+    background-color: var(--hover-blue);
+}
+
+.alert {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    border-radius: var(--border-radius);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--medium-gray);
+}
+
+.alert strong {
+    font-weight: bold;
+}
+
+.close {
+    color: var(--dark-gray);
+    cursor: pointer;
+    font-size: 1.2rem;
+}

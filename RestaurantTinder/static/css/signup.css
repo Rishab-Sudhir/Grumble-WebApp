@@ -116,3 +116,11 @@ form button[type="submit"] {
 form button[type="submit"]:hover {
   background-color: #434e73;
 }
+form .navigation-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+form .navigation-link a {    color: #007bff;
+    text-decoration: none;
+}
