@@ -24,3 +24,18 @@ def get_yelp_categories():
             categories = [(None, None)]  # In case the request fails, return an empty list
 
     return categories
+
+def call_yelp_api(params):
+    url = "https://api.yelp.com/v3/businesses/search"
+    headers = {
+        "Authorization": "Bearer 1xl8I59LYFDh02JClKR5W5CdYO_GytsV2JTaOnrmKrANWbPImF_YjMxfuBhfuLz9aoevKb_xXoBIA7uZmqweaKEXoWHl54NA3TZ2K87O6kToU8wr-vPvsysGOK5nZXYx"
+    }
+    response = requests.get(url, headers=headers, params=params)
+    if response.status_code == 200:
+        print("yelp call success")
+        return response.json()['businesses']
+    else:
+        # Handle API errors
+        error_message = response.text  # or response.json() if the response contains JSON
+        print("Yelp call failed:", error_message)
+        return []

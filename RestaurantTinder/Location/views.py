@@ -2,6 +2,8 @@ from django.shortcuts import redirect, render
 import requests
 from .forms import RestaurantSearchForm
 from django.contrib import messages
+from .utils import call_yelp_api
+
 
 def get_location(request):
     if request.method == 'POST':
@@ -26,7 +28,7 @@ def get_location(request):
                 # Store coordinates and radius in session
                 request.session['latitude'] = latitude
                 request.session['longitude'] = longitude
-                request.session['radius'] = int(radius) * 1609.34  # Convert miles to meters for Yelp API
+                request.session['radius'] = int(float(radius) * 1609.34) # Convert miles to meters for Yelp API
                 
                 return redirect('search_restaurants')  # URL name for the second page
             else:
@@ -44,10 +46,20 @@ def search_restaurants(request):
     if request.method == 'POST':
         form = RestaurantSearchForm(request.POST)
         if form.is_valid():
-            # Use form.cleaned_data to access the validated data
-            # Perform the search with the Yelp API using the form data
-            # Render the results or redirect as necessary
-            pass  # Replace with actual search logic and response
+            params = {
+                'latitude': request.session.get('latitude'),
+                'longitude': request.session.get('longitude'),
+                'radius': request.session.get('radius'),
+                'categories': form.cleaned_data.get('category'),
+                'locale': 'en_US',
+                'price': form.cleaned_data.get('price'),
+                'open_now': form.cleaned_data.get('open_now'),
+                'sort_by': 'best_match',
+                'limit': 20
+            }
+            print("Yelp API call parameters:", params)
+            businesses = call_yelp_api(params)
+            return render(request, 'location/display_results.html', {'businesses': businesses})
     else:
         form = RestaurantSearchForm()
 
