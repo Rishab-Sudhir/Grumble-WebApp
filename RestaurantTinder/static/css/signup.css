@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="{% static 'css/.css' %}">
-  </head>
-  <style>
-    * {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -128,50 +116,3 @@ form button[type="submit"] {
 form button[type="submit"]:hover {
   background-color: #434e73;
 }
-  </style>
-  <body>
-
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-    <strong>Message:</strong>{{ message }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true"> &times; </span>
-    </button>
-    </div>
-    {% endfor %}
-
-    <div class="header-container">
-      <h3> Tinder For Restaurants </h3>
-      </div>
-
-      <div class="spacer"></div>
-<!-- csrf token is django specific for forms-->
-    <div>
-    <form action="/signup" method="post"> 
-    {% csrf_token %}
-        <h2> Sign Up </h2>
-        <label for="">Username</label>
-        <input type="text" id="username" name="username" placeholder="Create a username (only letters and numbers)" Required>
-        <br>
-        <label for="">First Name</label>
-        <input type="text" id="fname" name="fname" placeholder="Enter Your First Name" Required>
-        <br>
-        <label for="">Last Name</label>
-        <input type="text" id="lname" name="lname" placeholder="Enter Your Last Name" Required>
-        <br>
-        <label for="">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="Enter Your Email Address" Required>
-        <br>
-        <label for="">Password</label>
-        <input type="password" id="pass1" name="pass1" placeholder="Create a Password" Required>
-        <br>
-        <label for="">Confirm your password</label>
-        <input type="password" id="pass2" name="pass2" placeholder="Confirm Your Password" Required>
-        <br>
-        <button type="submit">Sign Up</button>
-    </form>
-  </div>
-
-	<script src="{% static 'js/main.js' %}"></script>
-  </body>
-</html>
