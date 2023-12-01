@@ -59,6 +59,8 @@ def search_restaurants(request):
             }
             print("Yelp API call parameters:", params)
             businesses = call_yelp_api(params)
+            for business in businesses:
+                business['distance'] = business['distance'] / 1609.34 #converting to miles
             return render(request, 'location/display_results.html', {'businesses': businesses})
     else:
         form = RestaurantSearchForm()
