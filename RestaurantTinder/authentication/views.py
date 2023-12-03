@@ -97,6 +97,13 @@ def signup(request):
     else:
         return render(request, "authentication/signup.html")
 
+
+def signup_redirect(request):
+    messages.error(request, "Something wrong here, it may be that you already have account!")
+    return redirect('home')
+
+
+
 def signin(request):
 
     if request.method == 'POST':
