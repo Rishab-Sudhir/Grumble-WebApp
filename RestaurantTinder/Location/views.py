@@ -8,7 +8,10 @@ from .utils import call_yelp_api
 def get_location(request):
     if request.method == 'POST':
         location_query = request.POST.get('location')
-        radius = request.POST.get('radius')
+        if request.POST.get('radius') == None:
+            radius = 1
+        else:
+            radius = request.POST.get('radius')
 
         # Call Google Maps Geocoding API
         google_maps_url = 'https://maps.googleapis.com/maps/api/geocode/json'
@@ -28,7 +31,9 @@ def get_location(request):
                 # Store coordinates and radius in session
                 request.session['latitude'] = latitude
                 request.session['longitude'] = longitude
-                request.session['radius'] = int(float(radius) * 1609.34) # Convert miles to meters for Yelp API
+                request.session['radius'] = int(float(radius) * 1609.34)  # Convert miles to meters for Yelp API
+
+
                 
                 return redirect('search_restaurants')  # URL name for the second page
             else:

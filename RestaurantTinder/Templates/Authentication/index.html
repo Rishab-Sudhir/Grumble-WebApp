@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% load socialaccount %}
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,6 +53,12 @@
         <div class="button-container">
             <button type="submit"><a href="/signup">Sign Up</a></button>
             <button type="submit"><a href="/signin">Sign In</a></button>
+            <button class="btn btn-outline-info">
+              <a href="{% provider_login_url 'google'%}?next=/">
+                  <i class="fab fa-google"></i>
+                  Login with Google
+              </a>
+          </button>
         </div>
         {% endif %}
     </div>
