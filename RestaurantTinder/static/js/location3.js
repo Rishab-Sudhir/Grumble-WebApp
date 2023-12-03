@@ -2,21 +2,18 @@ let map, infoWindow, marker, geocoder;
 
 function initMap() {
     // Set a default center for the map
-    const defaultLocation = { lat: -34.397, lng: 150.644 };
+    const defaultLocation = { lat: 42.370530, lng: -71.091513 };
 
     // Initialize the map
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 6,
+        zoom: 8,
         center: defaultLocation,
     });
 
     // Initialize the Geocoder
     geocoder = new google.maps.Geocoder();
-
-    // Initialize InfoWindow
     infoWindow = new google.maps.InfoWindow();
 
-    // Try to get user's location
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             (position) => {
@@ -25,9 +22,20 @@ function initMap() {
                     lng: position.coords.longitude,
                 };
                 map.setCenter(userLocation);
-                infoWindow.setPosition(userLocation);
-                infoWindow.setContent('<div style="color: black;">Your location!</div>');
-                infoWindow.open(map);
+                map.setZoom(15); // Zoom in to the user's location
+
+                // Create or move the marker to the user's location
+                if (marker) {
+                    marker.setPosition(userLocation);
+                } else {
+                    marker = new google.maps.Marker({
+                        position: userLocation,
+                        map: map,
+                    });
+                }
+
+                // Set the address in the input field based on the user's location
+                geocodeLatLng(geocoder, userLocation);
             },
             () => {
                 handleLocationError(true, infoWindow, map.getCenter());
@@ -35,31 +43,25 @@ function initMap() {
         );
     } else {
         // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, defaultLocation);
+        handleLocationError(false, infoWindow, map.getCenter());
     }
 
-    // Event listener for map click
     map.addListener('click', function(e) {
         placeMarkerAndPanTo(e.latLng, map);
     });
 }
 
 function placeMarkerAndPanTo(latLng, map) {
-    // Move the marker if it already exists
     if (marker) {
         marker.setPosition(latLng);
     } else {
-        // Create a new marker
         marker = new google.maps.Marker({
             position: latLng,
             map: map,
         });
     }
 
-    // Pan the map to the new marker position
     map.panTo(latLng);
-
-    // Update the input field with the address
     geocodeLatLng(geocoder, latLng);
 }
 
@@ -115,5 +117,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Make sure to assign the initMap function to window.initMap
 window.initMap = initMap;
