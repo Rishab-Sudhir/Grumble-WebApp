@@ -30,15 +30,15 @@ body, html {
     padding: 20px;
     border-radius: var(--border-radius);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    width: 90%;
+    width: fit-content;
     max-width: 600px;
     margin: 20px;
-    text-align: center;
 }
 
 h1 {
     color: var(--primary-color);
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .form-group {
@@ -53,7 +53,7 @@ h1 {
 
 .form-group select,
 .form-group input[type="checkbox"] {
-    width: 100%;
+    width: fit-content;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid var(--medium-gray);
