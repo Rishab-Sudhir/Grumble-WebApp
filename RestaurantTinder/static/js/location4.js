@@ -15,6 +15,8 @@ function initMap() {
 }
 
 function tryGeolocation() {
+    showLoadingMessage("Generating your location...");
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             positionSuccess,
@@ -26,7 +28,9 @@ function tryGeolocation() {
     }
 }
 
+
 function positionSuccess(position) {
+    hideLoadingMessage();
     const userLocation = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
@@ -37,6 +41,7 @@ function positionSuccess(position) {
 }
 
 function positionError(browserHasGeolocation) {
+    hideLoadingMessage();
     const errorMessage = browserHasGeolocation ?
                          'Error: The Geolocation service failed.' :
                          'Error: Your browser doesn\'t support geolocation.';
@@ -45,6 +50,19 @@ function positionError(browserHasGeolocation) {
     infoWindow.setPosition(map.getCenter());
     infoWindow.open(map);
 }
+
+function hideLoadingMessage() {
+    // Implement this function to hide the loading message or spinner
+    document.getElementById('loadingMessage').style.display = 'none';
+}
+
+function showLoadingMessage(message) {
+    // Implement this function to show a loading message or spinner
+    // For example, update the text content of a designated div or show a modal/spinner
+    document.getElementById('loadingMessage').textContent = message;
+    document.getElementById('loadingMessage').style.display = 'block';
+}
+
 
 function setMapToLocation(location, zoomLevel) {
     map.setCenter(location);
@@ -81,6 +99,8 @@ function placeMarkerAndPanTo(latLng, map) {
     map.panTo(latLng);
     geocodeLatLng(geocoder, latLng);
 }
+
+
 
 function geocodeLatLng(geocoder, latLng) {
     geocoder.geocode({ 'location': latLng }, function(results, status) {

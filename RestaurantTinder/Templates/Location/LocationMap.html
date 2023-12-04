@@ -59,6 +59,7 @@
             <!-- Start of form -->
             <form method="post" action="{% url 'get_location' %}">
                 {% csrf_token %}
+                <div id="loadingMessage" style="display: none;">Generating your location...</div>
                 <div id="map" style="height: 400px; width: 100%;"></div>
                 <div class="input-group">
                     <label for="search-radius">Radius for restaurant search:</label>

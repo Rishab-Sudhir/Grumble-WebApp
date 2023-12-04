@@ -1,0 +1,139 @@
+/* Root Variables */
+:root {
+    --primary-color: #35424a;  /* Dark Slate Gray */
+    --secondary-color: #e8491d; /* Coral */
+    --tertiary-color: #f4f4f4;  /* Light Gray */
+    --alert-padding: 12px;
+    --font-size-large: 30px;
+    --font-size-small: 14px;
+    --border-size: 1px;
+    --border-radius: 4px;
+    --hover-color: #003d82;    /* Darker Blue for Hover */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+    text-align: center;
+    padding: 20px;
+}
+/* Header Styling */
+.header-container {
+    background-color: var(--primary-color);
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 0px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    border-radius: var(--border-radius);
+}
+
+.header-container h3 {
+    font-size: var(--font-size-large);
+    color: white;
+}
+
+/* Spacer Styling */
+.spacer {
+    height: 50px;
+    width: 100%;
+}
+  .container {
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+
+
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+/* Restaurant Card Styling */
+.restaurant-card .card {
+    overflow: hidden;
+}
+
+.card-img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 10px;
+}
+
+.card-title {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Spacing between buttons */
+    margin-top: 20px;
+}
+
+/* Button Styling */
+.btn {
+    flex: 1; /* Flex grow to fill the container equally */
+    padding: var(--alert-padding);
+    border-radius: var(--border-radius);
+    text-transform: uppercase;
+    font-size: var(--font-size-small);
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--hover-color);
+}
+
+.btn-success {
+    background-color: #28a745; /* Bootstrap success color */
+    color: var(--white);
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Darker green */
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Bootstrap secondary color */
+    color: var(--white);
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268; /* Darker grey */
+}
+
+.no-results {
+    margin-top: 20px;
+    font-size: var(--font-size-large);
+    color: var(--primary-color);
+}
