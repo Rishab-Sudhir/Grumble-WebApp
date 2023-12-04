@@ -26,7 +26,27 @@ if (cards.length > 0) {
 
 // Bind the showNextCard function to your buttons
 skipButton.addEventListener('click', showNextCard);
-saveButton.addEventListener('click', () => {
-    // Implement save logic here
-    showNextCard();
+saveButton.addEventListener('click', function() {
+    const currentBusiness = businesses[currentCard]; // Assuming you have the 'businesses' array available
+
+    // AJAX call to Django view to save the restaurant
+    fetch('/save-restaurant/', {
+        method: 'POST',
+        body: JSON.stringify({ 'business_id': currentBusiness.id }), // send the relevant restaurant ID or details
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken, // make sure to get the CSRF token
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); // handle response data
+        showNextCard();
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 });
+
+
+
