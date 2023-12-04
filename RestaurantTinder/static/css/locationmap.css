@@ -63,6 +63,10 @@ body {
     margin-right: 10px;
 }
 
+.loadingMessaeg {
+    font-size: 17px;
+    font-style: bold;
+}
 .input-group input[type="number"],
 .input-group input[type="text"] {
     padding: 10px;
