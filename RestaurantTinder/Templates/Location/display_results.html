@@ -1,63 +1,63 @@
-<div class="container">
-    <h1 class="text-center my-4">Tinder For Restaurants</h1>
-    
-    {% for business in businesses %}
-    <!-- Each Restaurant Entry Start -->
-    <div class="restaurant-card" style="display: none;"> <!-- Add restaurant-card class here -->
-        <div class="card mb-3">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="{{ business.image_url }}" class="card-img" alt="{{ business.name }}">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ business.name }}</h5>
-                        <p class="card-text"><small class="text-muted">{{ business.distance|floatformat:2 }} mi away</small></p>
-                        <p class="card-text">Categories: 
-                            {% for category in business.categories %}
-                                {{ category.title }}{% if not forloop.last %}, {% endif %}
-                            {% endfor %}
-                        </p>
-                        <p class="card-text">Location: {{ business.location.display_address|join:", " }}</p>
-                        <p class="card-text">Based on {{ business.review_count }} reviews</p>
-                        <a href="{{ business.url }}" class="btn btn-primary">More Details</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Restaurants</title>
+    <link rel="stylesheet" href="{% static 'css/results.css' %}">
+</head>
+<body>
+        <div class="header-container">
+            <h3> Tinder For Restaurants </h3>
+        </div>
+
+        <div class="spacer"></div> 
+      
+        <div class = "container">
+            {% if businesses %}
+                {% for business in businesses %}
+                    <!-- Each Restaurant Entry Start -->
+                    <div class="restaurant-card" style="display: none;">
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                               
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h1 class="card-title">{{ business.name }}</h1>
+                                        <div class="col-md-4">
+                                            <img src="{{ business.image_url }}" class="card-img" alt="{{ business.name }}">
+                                        </div>
+                                        <p class="card-text"><small class="text-muted">{{ business.distance|floatformat:2 }} mi away</small></p>
+                                        <p class="card-text">Categories: 
+                                            {% for category in business.categories %}
+                                                {{ category.title }}{% if not forloop.last %}, {% endif %}
+                                            {% endfor %}
+                                        </p>
+                                        <p class="card-text">Location: {{ business.location.display_address|join:", " }}</p>
+                                        <p class="card-text">Based on {{ business.review_count }} reviews</p>
+                                        <a href="{{ business.url }}" class="btn btn-primary">More Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!-- Each Restaurant Entry End -->
+                {% endfor %}
+
+                <!-- Buttons for saving a restaurant or skipping to the next -->
+                <div class="text-center">
+                    <button id="save" class="btn btn-success">Save</button>
+                    <button id="skip" class="btn btn-secondary">Skip</button>
                 </div>
-            </div>
+            {% else %}
+                <div class="no-results">
+                    <p>No results found. Try changing your filters.</p>
+                </div>
+            {% endif %}
         </div>
     </div>
-    <!-- Each Restaurant Entry End -->
-    {% endfor %}
 
-    <!-- Buttons for saving a restaurant or skipping to the next -->
-    <div class="text-center">
-        <button id="save" class="btn btn-success">Save</button> <!-- Ensure button has id="save" -->
-        <button id="skip" class="btn btn-secondary">Skip</button> <!-- Ensure button has id="skip" -->
-    </div>
-</div>
-
-<script>
-    let currentCard = 0;
-    const cards = document.querySelectorAll('.restaurant-card');
-    const showNextCard = () => {
-        if(currentCard < cards.length - 1) { // Check if there's a next card
-            cards[currentCard].style.display = 'none'; // Hide the current card
-            currentCard++; // Increment to the next card
-            cards[currentCard].style.display = 'block'; // Show the next card
-        } else {
-            // No more cards to show, maybe hide the buttons or indicate the end of the list
-        }
-    };
-
-    // Show the first card on page load
-    if (cards.length > 0) {
-        cards[0].style.display = 'block';
-    }
-
-    // Bind the showNextCard function to your buttons
-    document.getElementById('skip').addEventListener('click', showNextCard);
-    document.getElementById('save').addEventListener('click', () => {
-        // Implement save logic here
-        showNextCard();
-    });
-</script>
+    <script src="{% static 'js/results.js' %}"></script>
+</body>
+</html>

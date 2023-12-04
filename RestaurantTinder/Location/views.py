@@ -1,9 +1,13 @@
 from django.shortcuts import redirect, render
 import requests
+import json
 from .forms import RestaurantSearchForm
 from django.contrib import messages
 from .utils import call_yelp_api
-
+from django.http import JsonResponse
+from .models import SavedRestaurant
+from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 
 def get_location(request):
     if request.method == 'POST':
@@ -71,3 +75,40 @@ def search_restaurants(request):
         form = RestaurantSearchForm()
 
     return render(request, 'location/search_restaurants.html', {'form': form})
+
+@login_required
+@require_POST
+def save_restaurant(request):
+    try:
+        yelp_id = request.POST['yelp_id']
+        name = request.POST['name']
+        categories = request.POST['categories']
+        categories_json = json.loads(categories)  # Convert string to JSON
+        rating = request.POST['rating']
+        price = request.POST['price']
+        phone = request.POST['phone']
+        address = request.POST['address']
+        image_url = request.POST['image_url']
+        yelp_url = request.POST['yelp_url']
+        user = request.user
+
+        if not SavedRestaurant.objects.filter(yelp_id=yelp_id, user=user).exists():
+            SavedRestaurant.objects.create(
+                yelp_id=yelp_id,
+                name=name,
+                categories=categories_json,
+                rating=rating,
+                price=price,
+                phone=phone,
+                address=address,
+                image_url=image_url,
+                yelp_url=yelp_url,
+                user=user
+            )
+            return JsonResponse({'status': 'success', 'msg': 'Restaurant saved'}, status=201)
+        else:
+            return JsonResponse({'status': 'error', 'msg': 'Restaurant already saved'}, status=200)
+    except KeyError as e:
+        return JsonResponse({'status': 'error', 'msg': f'Missing data: {e}'}, status=400)
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'msg': str(e)}, status=500)
