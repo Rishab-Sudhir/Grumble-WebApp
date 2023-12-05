@@ -10,12 +10,9 @@ class SavedRestaurant(models.Model):
     yelp_url = models.URLField()
     categories = JSONField()  # Store categories as JSON
     rating = models.FloatField()
-    latitude = models.FloatField()
-    longitude = models.FloatField()
     address = models.TextField()
     phone = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
-    distance = models.FloatField()
 
     def __str__(self):
         return self.name
