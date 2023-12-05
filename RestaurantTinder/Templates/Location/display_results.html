@@ -68,21 +68,6 @@
                             </div>
                         </div>
                     </div>
-                    <div id="end-of-list" style="display: none;">
-                        <p>You have viewed all restaurants fitting your criteria.</p>
-                        <a href="{% url 'search_restaurants' %}" class="btn btn-primary">Change Criteria</a>
-                        <button onclick="window.location.reload();" class="btn btn-success">Refresh</button>
-                    </div>
-                    <!-- JSON script for categories -->
-
-                    <!-- Each Restaurant Entry End -->
-                {% endfor %}
-
-                <!-- Buttons for saving a restaurant or skipping to the next -->
-                <div class="text-center">
-                    <button id="save" class="btn btn-success">Save</button>
-                    <button id="skip" class="btn btn-secondary">Skip</button>
-                </div>
                 <!-- Each Restaurant Entry End -->
             {% endfor %}
 
