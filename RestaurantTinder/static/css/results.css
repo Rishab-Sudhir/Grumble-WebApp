@@ -49,14 +49,14 @@ body {
 }
 
 .spacer {
-    height: 10px;
+    height: 0px;
     width: 100%;
 }
 
 .main-content {
     position: relative;
     width: 600px; /* Same width as .container */
-    height: 700px; /* Same height as .container */
+    height: 500px; /* Same height as .container */
 }
 
 .container.blur {
@@ -111,7 +111,6 @@ body {
     width: 600px;
     height: 700px;
     max-width: 600px;
-    margin: 60px auto 0;
     padding: 20px;
     background-color: var(--white);
     border-radius: var(--border-radius);
