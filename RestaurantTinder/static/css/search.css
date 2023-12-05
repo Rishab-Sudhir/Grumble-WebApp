@@ -4,33 +4,64 @@
     padding: 0;
     font-family: 'Arial', sans-serif;
 }
-
 :root {
     --primary-color: #35424a;  /* Dark Slate Gray */
     --secondary-color: #e8491d; /* Coral */
     --tertiary-color: #f4f4f4;  /* Light Gray */
-    --light-gray: #f4f4f4;
-    --medium-gray: #ddd;
-    --dark-gray: #333;
-    --hover-color: #003d82;    /* Darker Blue for Hover */
+    --alert-padding: 12px;
+    --font-size-large: 30px;
+    --font-size-small: 14px;
+    --border-size: 1px;
     --border-radius: 4px;
+    --hover-color: #003d82;    /* Darker Blue for Hover */
+    --white: #ffffff;
 }
 
-body, html {
-    height: 100%;
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    background: var(--tertiary-color);
-    font-size: 1rem;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--tertiary-color);
 }
+/* Header Styling */
+.header-container {
+    background-color: var(--primary-color);
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    border-radius: 0px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-radius: var(--border-radius);
+  }
+  
+  .header-container h3 {
+    font-size: 30px;
+    color: white;
+
+  }
+  
+  /* Spacer Styling */
+  .spacer {
+    height: 50px;
+    width: 100%;
+  }
 
 .container {
     background-color: var(--white);
     padding: 20px;
-    border-radius: var(--border-radius);
+    border-radius: 12px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    width: fit-content;
+    width: 500px;
     max-width: 600px;
     margin: 20px;
 }
@@ -53,6 +84,7 @@ h1 {
 
 .form-group select,
 .form-group input[type="checkbox"] {
+    display: inline-block;
     width: fit-content;
     padding: 10px;
     margin-bottom: 10px;

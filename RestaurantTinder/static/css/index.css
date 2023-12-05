@@ -77,6 +77,7 @@ body, html {
 
 /* Button Container */
 .button-container {
+    pointer-events: auto;
     display: flex;
     justify-content: center;
     gap: 20px;
