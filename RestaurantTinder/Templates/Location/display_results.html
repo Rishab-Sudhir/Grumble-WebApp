@@ -8,11 +8,20 @@
     <link rel="stylesheet" href="{% static 'css/results.css' %}">
 </head>
 <body>
-        <div class="header-container">
-            <h3> Tinder For Restaurants </h3>
-        </div>
+    <div class="header-container">
+        <h3> Tinder For Restaurants </h3>
+    </div>
 
-        <div class="spacer"></div> 
+    <div class="spacer"></div> 
+    <div class="main-content">
+
+    <div id="end-of-list" class="overlay" style="display: none;">
+        <p>You have viewed all restaurants fitting your criteria.</p>
+        <div class="btn-container">
+            <a href="{% url 'search_restaurants' %}" class="btn btn-primary">Change Criteria</a>
+            <button onclick="window.location.reload();" class="btn btn-success">Refresh</button>
+        </div>
+    </div>
       
         <div class = "container">
             {% if businesses %}
@@ -46,27 +55,43 @@
                                         <p class="card-text">Based on {{ business.review_count }} reviews</p>
                                         <a href="{{ business.url }}" class="btn btn-primary">More Details</a>
                                     </div>
+                                    <p class="card-text"><small class="text-muted">{{ business.distance|floatformat:2 }} mi away</small></p>
+                                    <p class="card-text">Categories: 
+                                        {% for category in business.categories %}
+                                            {{ category.title }}{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </p>
+                                    <p class="card-text">Location: {{ business.location.display_address|join:", " }}</p>
+                                    <p class="card-text">Based on {{ business.review_count }} reviews</p>
+                                    <a href="{{ business.url }}" class="btn btn-primary">More Details</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- JSON script for categories -->
+                <!-- Each Restaurant Entry End -->
+            {% endfor %}
 
-                    <!-- Each Restaurant Entry End -->
-                {% endfor %}
-
-                <!-- Buttons for saving a restaurant or skipping to the next -->
-                <div class="text-center">
-                    <button id="save" class="btn btn-success">Save</button>
-                    <button id="skip" class="btn btn-secondary">Skip</button>
-                </div>
-            {% else %}
-                <div class="no-results">
-                    <p>No results found. Try changing your filters.</p>
+            <!-- Check if it's the last restaurant -->
+            {% if forloop.last %}
+                <div class="end-of-list">
+                    <p>You have viewed all restaurants fitting your criteria.</p>
+                    <a href="{% url 'your_filter_page_url_name' %}" class="btn btn-primary">Change Criteria</a>
+                    <button onclick="window.location.reload();" class="btn btn-success">Refresh</button>
                 </div>
             {% endif %}
-        </div>
+
+            <!-- Buttons for saving a restaurant or skipping to the next -->
+            <div class="button-container">
+                <button id="save" class="btn btn-success">Save</button>
+                <button id="skip" class="btn btn-secondary">Skip</button>
+            </div>
+        {% else %}
+            <div class="no-results">
+                <p>No results found. Try changing your filters.</p>
+            </div>
+        {% endif %}
     </div>
     <script src="{% static 'js/results.js' %}"></script>
 </body>
 </html>
+
