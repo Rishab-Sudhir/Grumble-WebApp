@@ -1,9 +1,13 @@
 from django.shortcuts import redirect, render
 import requests
+import json
 from .forms import RestaurantSearchForm
 from django.contrib import messages
 from .utils import call_yelp_api
-
+from django.http import JsonResponse
+from .models import SavedRestaurant
+from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 
 def get_location(request):
     if request.method == 'POST':
@@ -71,3 +75,42 @@ def search_restaurants(request):
         form = RestaurantSearchForm()
 
     return render(request, 'location/search_restaurants.html', {'form': form})
+
+@login_required
+@require_POST
+def save_restaurant(request):
+    try:
+        data = json.loads(request.body)  # Parse the JSON data
+        yelp_id = data["yelp_id"]
+        name = data["name"]
+        categories = data["categories"]
+        #categoriesList = ', '.join(d['title'] for d in categories)
+        #categories_json = json.loads(categoriesList)  # Convert string to JSON if necessary
+        rating = data["rating"]
+        price = data["price"]
+        phone = data["phone"]
+        address = data["address"]
+        image_url = data["image_url"]
+        yelp_url = data["yelp_url"]
+        user = request.user
+
+        if not SavedRestaurant.objects.filter(yelp_id=yelp_id, user=user).exists():
+            SavedRestaurant.objects.create(
+                yelp_id=yelp_id,
+                name=name,
+                categories=categories,
+                rating=rating,
+                price=price,
+                phone=phone,
+                address=address,
+                image_url=image_url,
+                yelp_url=yelp_url,
+                user=user
+            )
+            return JsonResponse({'status': 'success', 'msg': 'Restaurant saved'}, status=201)
+        else:
+            return JsonResponse({'status': 'error', 'msg': 'Restaurant already saved'}, status=200)
+    except KeyError as e:
+        return JsonResponse({'status': 'error', 'msg': f'Missing data: {e}'}, status=400)
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'msg': str(e)}, status=500)

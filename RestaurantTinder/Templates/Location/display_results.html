@@ -23,18 +23,37 @@
         </div>
     </div>
       
-    <div class="container">
-        {% if businesses %}
-            {% for business in businesses %}
-                <!-- Each Restaurant Entry Start -->
-                <div class="restaurant-card" style="display: none;">
-                    <div class="card mb-3">
-                        <div class="row no-gutters">      
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h1 class="card-title">{{ business.name }}</h1>
-                                    <div class="col-md-4">
-                                        <img src="{{ business.image_url }}" class="card-img" alt="{{ business.name }}">
+        <div class = "container">
+            {% if businesses %}
+                {% for business in businesses %}
+                    <!-- Each Restaurant Entry Start -->
+                    <div class="restaurant-card" style="display: none;" 
+                        data-yelp-id="{{ business.id }}"
+                        data-name="{{ business.name }}"
+                        data-categories="{{ business.categories }}"
+                        data-rating="{{ business.rating }}"
+                        data-price="{{ business.price }}"
+                        data-phone="{{ business.phone }}"
+                        data-address="{{ business.location.display_address|join:', ' }}"
+                        data-image-url="{{ business.image_url }}"
+                        data-yelp-url="{{ business.url }}">
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h1 class="card-title">{{ business.name }}</h1>
+                                        <div class="col-md-4">
+                                            <img src="{{ business.image_url }}" class="card-img" alt="{{ business.name }}">
+                                        </div>
+                                        <p class="card-text"><small class="text-muted">{{ business.distance|floatformat:2 }} mi away</small></p>
+                                        <p class="card-text">Categories: 
+                                            {% for category in business.categories %}
+                                                {{ category.title }}{% if not forloop.last %}, {% endif %}
+                                            {% endfor %}
+                                        </p>
+                                        <p class="card-text">Location: {{ business.location.display_address|join:", " }}</p>
+                                        <p class="card-text">Based on {{ business.review_count }} reviews</p>
+                                        <a href="{{ business.url }}" class="btn btn-primary">More Details</a>
                                     </div>
                                     <p class="card-text"><small class="text-muted">{{ business.distance|floatformat:2 }} mi away</small></p>
                                     <p class="card-text">Categories: 
@@ -54,6 +73,15 @@
                         <a href="{% url 'search_restaurants' %}" class="btn btn-primary">Change Criteria</a>
                         <button onclick="window.location.reload();" class="btn btn-success">Refresh</button>
                     </div>
+                    <!-- JSON script for categories -->
+
+                    <!-- Each Restaurant Entry End -->
+                {% endfor %}
+
+                <!-- Buttons for saving a restaurant or skipping to the next -->
+                <div class="text-center">
+                    <button id="save" class="btn btn-success">Save</button>
+                    <button id="skip" class="btn btn-secondary">Skip</button>
                 </div>
                 <!-- Each Restaurant Entry End -->
             {% endfor %}
@@ -78,7 +106,6 @@
             </div>
         {% endif %}
     </div>
-
     <script src="{% static 'js/results.js' %}"></script>
 </body>
 </html>
