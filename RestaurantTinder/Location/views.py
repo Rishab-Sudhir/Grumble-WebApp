@@ -80,23 +80,25 @@ def search_restaurants(request):
 @require_POST
 def save_restaurant(request):
     try:
-        yelp_id = request.POST['yelp_id']
-        name = request.POST['name']
-        categories = request.POST['categories']
-        categories_json = json.loads(categories)  # Convert string to JSON
-        rating = request.POST['rating']
-        price = request.POST['price']
-        phone = request.POST['phone']
-        address = request.POST['address']
-        image_url = request.POST['image_url']
-        yelp_url = request.POST['yelp_url']
+        data = json.loads(request.body)  # Parse the JSON data
+        yelp_id = data["yelp_id"]
+        name = data["name"]
+        categories = data["categories"]
+        #categoriesList = ', '.join(d['title'] for d in categories)
+        #categories_json = json.loads(categoriesList)  # Convert string to JSON if necessary
+        rating = data["rating"]
+        price = data["price"]
+        phone = data["phone"]
+        address = data["address"]
+        image_url = data["image_url"]
+        yelp_url = data["yelp_url"]
         user = request.user
 
         if not SavedRestaurant.objects.filter(yelp_id=yelp_id, user=user).exists():
             SavedRestaurant.objects.create(
                 yelp_id=yelp_id,
                 name=name,
-                categories=categories_json,
+                categories=categories,
                 rating=rating,
                 price=price,
                 phone=phone,

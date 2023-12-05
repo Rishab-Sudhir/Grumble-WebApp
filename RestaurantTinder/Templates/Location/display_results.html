@@ -18,10 +18,18 @@
             {% if businesses %}
                 {% for business in businesses %}
                     <!-- Each Restaurant Entry Start -->
-                    <div class="restaurant-card" style="display: none;">
+                    <div class="restaurant-card" style="display: none;" 
+                        data-yelp-id="{{ business.id }}"
+                        data-name="{{ business.name }}"
+                        data-categories="{{ business.categories }}"
+                        data-rating="{{ business.rating }}"
+                        data-price="{{ business.price }}"
+                        data-phone="{{ business.phone }}"
+                        data-address="{{ business.location.display_address|join:', ' }}"
+                        data-image-url="{{ business.image_url }}"
+                        data-yelp-url="{{ business.url }}">
                         <div class="card mb-3">
                             <div class="row no-gutters">
-                               
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <h1 class="card-title">{{ business.name }}</h1>
@@ -42,6 +50,8 @@
                             </div>
                         </div>
                     </div>
+                    <!-- JSON script for categories -->
+
                     <!-- Each Restaurant Entry End -->
                 {% endfor %}
 
@@ -57,7 +67,6 @@
             {% endif %}
         </div>
     </div>
-
     <script src="{% static 'js/results.js' %}"></script>
 </body>
 </html>
