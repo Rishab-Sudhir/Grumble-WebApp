@@ -1,0 +1,10 @@
+{% block content %}
+    <h2>Saved Restaurants</h2>
+    <ul>
+        {% for restaurant in restaurants %}
+            <li>{{ restaurant.name }} - {{ restaurant.categories }} - {{ restaurant.price }}</li>
+        {% empty %}
+            <li>No saved restaurants.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -9,4 +9,5 @@ urlpatterns = [
     path('signout', views.signout, name = "signout"),
     path('activate/<uidb64>/<token>', views.activate, name = "activate"),
     path('social/signup/', views.signup_redirect, name='signup_redirect'),
+    path('saved_restaurants/', views.saved_restaurants, name='saved_restaurants'),
 ]
