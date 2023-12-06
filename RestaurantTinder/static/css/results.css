@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 :root {
@@ -19,7 +19,6 @@
 }
 
 body {
-    overflow: hidden;
     font-family: var(--font-family);
     margin: 0;
     padding: 0;
@@ -36,12 +35,13 @@ body {
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    border-radius: var(--border-radius);
-}
+    position: fixed; /* Changed from 'absolute' to 'fixed' */
+    z-index: 10; /* Ensure it's above other content */
+    }
+
 
 .header-container h3 {
     font-size: var(--font-size-large);
@@ -54,9 +54,9 @@ body {
 }
 
 .main-content {
-    position: relative;
+    position: fixed;
     width: 600px; /* Same width as .container */
-    height: 500px; /* Same height as .container */
+    height: 700px; /* Same height as .container */
 }
 
 .container.blur {
@@ -86,7 +86,7 @@ body {
 }
 
 .overlay .btn-container {
-    display: flex;
+    display: absolute;
     justify-content: center;
     gap: 20px; /* Space between buttons */
 }
@@ -102,12 +102,12 @@ body {
     /* Remove 'flex: 1' to stop buttons from stretching */
     max-width: 200px; /* Maximum width for each button */
     height: fit-content; /* Adjust height to content */
+
 }
 
 
 .container {
     max-height: 100vh; /* Maximum height to fit the viewport */
-    overflow: hidden; /* Hide overflow */
     width: 600px;
     height: 700px;
     max-width: 600px;
@@ -115,11 +115,16 @@ body {
     background-color: var(--white);
     border-radius: var(--border-radius);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-    position: relative;
+    position: fixed;
+    overflow: scroll;
 }
 
 .card {
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: space-between; /* Distribute space between elements */
 }
 
 .card-img {
@@ -130,76 +135,205 @@ body {
     border-radius: 30px;
 }
 
-
 .card-body {
     padding: 15px;
     text-align: center;
 }
 
-.card-title {
+.card-title, .card-text {
     font-size: 1.5em;
     color: var(--primary-color);
     margin-bottom: 10px;
 }
 
-.card-text {
+.card-categories {
     color: var(--dark-gray);
-    margin-bottom: 10px;
+    align-items: left;
+    
+}
+.category-span{
+    border-radius: 4px;
+    background-color:slateblue;
+    padding: 2px 6px;
+    width: fit-content;
+    display: inline-block; /* change the display type           */
+    /* margin: 10px 0;        apply the needed vertical margins */
+    margin-right: 15px;
+    color: white;
+ }
+
+.card .categories-label{
+    font-size: 18px;
+    font-weight: 700;
+    text-align-last: left;
+    margin: 5px;
+
 }
 
-.card-buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0 15px;
+.location-label{
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 175px;
+    text-align-last: left;
+    display: inline-block;
+
 }
 
+.card .location-distance-block {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space out the child elements */
+    align-items: center; /* Align items vertically in the center */
+    margin-top: 10px; /* Add some space above this block */
+}
+
+
+.card .row1-span{
+
+    color: var(--dark-gray);
+    padding-top: 5px;
+    /* padding: 2px 6px; */
+    display: inline-block; /* change the display type           */
+    margin: 10px 0;   
+    color: black;
+    background-color: yellow;
+    float: left;
+    width: 150px;
+    margin-right: 100px;
+}
+
+
+.card .row-span {
+    color: var(--dark-gray);
+    display: inline-block;
+    margin: 10px 0;
+    color: black;
+    float: left;
+    width: 150px; /* Adjust width as needed */
+}
+
+.rating-details-block {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space out the child elements */
+    align-items: center; /* Align items vertically in the center */
+    margin-top: 10px; /* Add some space above this block */
+}
+
+/* New class for the ratings and more details block */
+
+
+/* .card .card-location-span{
+    color: var(--dark-gray);
+    padding-top: 5px;
+    margin: 5px;
+    width: 150px;
+    display: inline-block;
+
+}
+
+.card-distance-span {
+    color: var(--dark-gray);
+    padding-top: 5px;
+    margin: 5px;
+    width: 150px;
+    display: inline-block;
+} */
+
+
+
+.card-reviews {
+    color: var(--dark-gray);
+    padding-top: 5px;
+    margin: 5px;
+}
+
+
+
+/* Specific styling for the 'More Details' button */
+.card .more-details {
+    padding: 12px;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--secondary-color);
+    color: var(--white);
+    cursor: pointer;
+    pointer-events: auto; /* Enable clicks on buttons */
+
+    flex: 0 0 auto;
+    font-size: var(--font-size-small);
+    margin: 10px; /* Adjust margin as needed */
+    padding: 10px 20px; /* Adjust padding as needed */
+    text-decoration: none;
+    background-color: var(--secondary-color);
+    color: white;
+    font-weight: bold;
+}
+
+.more-details:hover {
+    background-color: var(--hover-color); /* Color when the button is hovered over */
+    text-decoration: none; /* Continues to ensure no underline on hover */
+}
+
+
+/* Base button styling */
 .btn {
     flex: none;
     padding: var(--alert-padding);
     border-radius: var(--border-radius);
-    text-transform: uppercase;
     font-size: var(--font-size-small);
     cursor: pointer;
-    width: auto;
-    margin: 10px 0;
+    margin: 5px; /* Adjust margin as needed */
+    padding: 10px 20px; /* Adjust padding as needed */
+    text-decoration: none;
 }
 
-.button-container {
-    position: fixed; /* Fixed position to keep buttons on the screen */
-    top: 50%; /* Align vertically at the middle */
+
+/* Specific styling for the 'More Details' button */
+
+
+
+/* Hover effect for 'More Details' button */
+.more-details:hover {
+    background-color: var(--hover-color); /* Color when the button is hovered over */
+    text-decoration: none; /* Continues to ensure no underline on hover */
+}
+
+
+/* Skip-Save Button Container */
+/* Adjusted Skip-Save Button Container */
+.skip-save-container {
+    position: fixed; /* Fixed position to keep it in view */
+    bottom: 0; /* Align at the bottom of the viewport */
     left: 0;
     right: 0;
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    pointer-events: none; /* Allows clicks to pass through when not over buttons */
-} 
-
-
-.button-container .btn {
-    pointer-events: auto; /* Enable clicks on buttons */
-    position: absolute;
-    padding: 10px 20px; /* Adjust padding as needed */
-    font-size: 30px;
+    justify-content: center;
     gap: 20px;
+    padding: 10px 20px; /* Add some padding */
+    z-index: 20; /* Ensure it's above other content */
+    background: var(--tertiary-color); /* Optional: Add a background color */
+    
 }
 
-#save {
-    left: 150px; /* Adjust distance from the left edge */
+.skip-save .btn {
+    flex: none; /* Remove flex properties */
+    font-size: 20px; /* Adjust font size */
+    padding: 10px 80px; /* Adjust padding */
+    margin: 0; /* Remove margin */
 }
 
-#skip {
-    right: 150px; /* Adjust distance from the right edge */
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .button-container .btn {
+        font-size: 18px; /* Smaller font size for smaller screens */
+    }
 }
 
-.btn-primary {
-    background-color: var(--secondary-color);
-    color: var(--white);
-}
-
-.btn-primary:hover {
-    background-color: var(--hover-color);
+/* Additional media query for very small screens */
+@media screen and (max-width: 480px) {
+    .button-container .btn {
+        font-size: 16px; /* Even smaller font size for very small screens */
+        padding: 5px 10px; /* Reduced padding for very small screens */
+    }
 }
 
 .btn-success {
@@ -209,7 +343,7 @@ body {
 }
 
 .btn-success:hover {
-    background-color: #218838;
+    background-color: #28a745;
 }
 
 .btn-secondary {

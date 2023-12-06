@@ -109,10 +109,12 @@ form button[type="submit"] {
   background-color: var(--secondary-color);
   color: var(--white);
   cursor: pointer;
+  pointer-events: auto; /* Enable clicks on buttons */
 }
 
 form button[type="submit"]:hover {
   background-color: var(--hover-color);
+  pointer-events: auto; /* Enable clicks on buttons */
 }
 
 .navigation-link {

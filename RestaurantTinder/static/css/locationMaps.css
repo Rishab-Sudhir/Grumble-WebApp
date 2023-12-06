@@ -125,6 +125,7 @@ body {
     border-radius: var(--border-radius);
     cursor: pointer;
     transition: background-color 0.3s;
+    pointer-events: auto; /* Enable clicks on buttons */
 }
 
 #search-button:hover {

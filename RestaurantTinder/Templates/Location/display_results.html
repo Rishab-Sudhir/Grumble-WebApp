@@ -4,6 +4,9 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
     <title>Search Restaurants</title>
     <link rel="stylesheet" href="{% static 'css/results.css' %}">
 </head>
@@ -45,25 +48,44 @@
                                         <div class="col-md-4">
                                             <img src="{{ business.image_url }}" class="card-img" alt="{{ business.name }}">
                                         </div>
-                                        <p class="card-text"><small class="text-muted">{{ business.distance|floatformat:2 }} mi away</small></p>
-                                        <p class="card-text">Categories: 
-                                            {% for category in business.categories %}
-                                                {{ category.title }}{% if not forloop.last %}, {% endif %}
-                                            {% endfor %}
-                                        </p>
-                                        <p class="card-text">Location: {{ business.location.display_address|join:", " }}</p>
-                                        <p class="card-text">Based on {{ business.review_count }} reviews</p>
-                                        <a href="{{ business.url }}" class="btn btn-primary">More Details</a>
-                                    </div>
-                                    <p class="card-text"><small class="text-muted">{{ business.distance|floatformat:2 }} mi away</small></p>
-                                    <p class="card-text">Categories: 
+                                        <div class="card-categories">
+                                            <p class="categories-label">Categories:   </p>
                                         {% for category in business.categories %}
-                                            {{ category.title }}{% if not forloop.last %}, {% endif %}
-                                        {% endfor %}
-                                    </p>
-                                    <p class="card-text">Location: {{ business.location.display_address|join:", " }}</p>
-                                    <p class="card-text">Based on {{ business.review_count }} reviews</p>
-                                    <a href="{{ business.url }}" class="btn btn-primary">More Details</a>
+                                            <span class = "category-span"> {{category.title}} </span>
+                                            {% if not forloop.last %} {% endif %}
+                                        {% endfor %} 
+                                        </div>
+                                    
+                                        <div class = "location-distance-block" >
+                                            <!-- <span class="location-label" >Location:</span>
+                                            <span class="location-label">Distance:</span> -->
+                                            <br>
+                                            <span class="row-span">
+                                                <p class="location-label">Location:</p>
+                                                <p>{{ business.location.display_address|join:", " }}</p>
+                                            </span>
+                                            <!-- <p class="location-label">Distance:</p> -->
+                                            <span class="row-span">
+                                                <p class="location-label">Distance:</p>
+                                                <p>{{ business.distance|floatformat:2 }} mi away</p>
+                                            </span>
+                                        </div>
+                                        
+
+                                        <div class = "rating-details-block" >
+                                            <span class="row-span">
+                                                <p class="categories-label">Reviews:</p>
+                                                Based on {{ business.review_count }} reviews
+                                             </span>
+                                                <!-- <a href="{{ business.url }}" class="btn more-details-button">More Details</a> -->
+                                            <span class="row-span">
+                                                <button class = "more-details" onclick="location.href='{{ business.url }}';">More Details</button>
+                                            </span>                                      
+                                        </div>
+
+                
+                            
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -79,18 +101,20 @@
                     <button onclick="window.location.reload();" class="btn btn-success">Refresh</button>
                 </div>
             {% endif %}
-
+            
             <!-- Buttons for saving a restaurant or skipping to the next -->
-            <div class="button-container">
+            <div class="skip-save-container">
                 <button id="save" class="btn btn-success">Save</button>
                 <button id="skip" class="btn btn-secondary">Skip</button>
             </div>
+
         {% else %}
             <div class="no-results">
                 <p>No results found. Try changing your filters.</p>
             </div>
         {% endif %}
     </div>
+    
     <script src="{% static 'js/results.js' %}"></script>
 </body>
 </html>

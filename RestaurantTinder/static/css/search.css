@@ -101,8 +101,10 @@ button[type="submit"] {
     color: var(--white);
     cursor: pointer;
     transition: background-color 0.3s;
+    pointer-events: auto; /* Enable clicks on buttons */
 }
 
 button[type="submit"]:hover {
     background-color: var(--hover-color);
+    pointer-events: auto; /* Enable clicks on buttons */
 }
