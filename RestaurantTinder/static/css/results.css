@@ -21,13 +21,14 @@
 body {
     font-family: var(--font-family);
     margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
     background-color: var(--tertiary-color);
     overflow: scroll;
+    overflow-y: auto; /* Allow vertical scrolling */
+    padding-bottom: 80px; /* Add padding to the bottom */
 }
 
 .header-container {
@@ -50,14 +51,15 @@ body {
 }
 
 /* Spacer Styling */
-.spacer {
-    height: 80px;
+/* .spacer {
+    height: 10px;
     width: 100%;
-  }
+  } */
 
-.main-content {
-    width: 600px; /* Same width as .container */
-    height: 700px; /* Same height as .container */
+  .main-content {
+    width: 600px; /* Control the width as needed */
+    margin: 50px auto 20px; /* Adjust top margin to account for the header */
+    padding-bottom: 80px;
 }
 
 .container.blur {
@@ -109,15 +111,12 @@ body {
 
 .container {
     width: 600px;
-    height: 700px;
     max-width: 600px;
     padding: 15px;
     background-color: var(--white);
     border-radius: var(--border-radius);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-    position: fixed;
-    overflow: scroll;
-    margin: 10px;
+    margin: 10px auto; /* Center the container and add margin for spacing */
 }
 
 .card {
@@ -131,7 +130,7 @@ body {
 
 .card-img {
     width: 100%;
-    height: 400px; /* Fixed height for all images */
+    height: 350px; /* Fixed height for all images */
     object-fit: cover; /* Maintain aspect ratio without distortion */
     padding: 15px;
     border-radius: 30px;
@@ -145,12 +144,13 @@ body {
 .card-title{
     font-size: 24px;
     color: var(--primary-color);
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .card-categories {
     color: var(--dark-gray);
     align-items: left;
+    text-align: left;
 }
 
 .category-span{
@@ -167,9 +167,9 @@ body {
 .card .categories-label{
     font-size: 18px;
     font-weight: 700;
-    text-align-last: left;
     margin: 5px;
-
+    display: inline;
+    text-align: left;
 }
 
 .label{
@@ -297,40 +297,30 @@ body {
 /* Skip-Save Button Container */
 /* Adjusted Skip-Save Button Container */
 .skip-save-container {
-    position: fixed; /* Fixed position to keep it in view */
-    bottom: 0; /* Align at the bottom of the viewport */
+    position: fixed; /* Keep it at the bottom */
+    bottom: 20px; 
     left: 0;
     right: 0;
     display: flex;
     justify-content: center;
     gap: 20px;
-    padding: 10px 20px; /* Add some padding */
+    padding: 15px 25px; /* Add some padding */
     z-index: 20; /* Ensure it's above other content */
     background: var(--tertiary-color); /* Optional: Add a background color */
-    
 }
 
 .skip-save .btn {
     flex: none; /* Remove flex properties */
-    font-size: 20px; /* Adjust font size */
+    font-size: 25px; /* Adjust font size */
     padding: 10px 80px; /* Adjust padding */
     margin: 0; /* Remove margin */
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
-/* Responsive adjustments */
-@media screen and (max-width: 768px) {
-    .button-container .btn {
-        font-size: 18px; /* Smaller font size for smaller screens */
-    }
-}
-
-/* Additional media query for very small screens */
-@media screen and (max-width: 480px) {
-    .button-container .btn {
-        font-size: 16px; /* Even smaller font size for very small screens */
-        padding: 6px 12px; /* Reduced padding for very small screens */
-    }
+.btn-primary{
+    background-color:var(--secondary-color);
+    color: var(--white);
+    width: fit-content;
 }
 
 .btn-success {
