@@ -94,3 +94,49 @@ saveButton.addEventListener('click', () => {
     showNextCard();
 });
 
+
+function updateYelpRatings() {
+    // Define the base path to the star images
+    const basePath = '/static/assets/yelp_stars/web_and_ios/small/';
+
+    // Select all restaurant cards
+    const restaurantCards = document.querySelectorAll('.restaurant-card');
+
+    restaurantCards.forEach(card => {
+        // Get the Yelp rating from the data attribute
+        const yelpRating = parseFloat(card.getAttribute('data-rating'));
+
+        // Determine the filename of the star image
+        const imageName = getStarImageName(yelpRating);
+
+        // Construct the full path to the star image
+        const imagePath = basePath + imageName;
+
+        // Find the element where the star image should be displayed
+        // Adjust the selector if your structure is different
+        const ratingElement = card.querySelector('.yelp-rating-img');
+
+        // Set the image source
+        if (ratingElement) {
+            ratingElement.src = imagePath;
+        }
+    });
+}
+
+function getStarImageName(rating) {
+    // Round the rating to the nearest half
+    const roundedRating = Math.round(rating * 2) / 2;
+    let imageName;
+
+    // Construct the image file name
+    if (roundedRating % 1 === 0) {
+        imageName = `small_${roundedRating}@2x.png`;
+    } else {
+        imageName = `small_${Math.floor(roundedRating)}_half@2x.png`;
+    }
+
+    return imageName;
+}
+
+// Execute the function when the document is fully loaded
+document.addEventListener('DOMContentLoaded', updateYelpRatings);

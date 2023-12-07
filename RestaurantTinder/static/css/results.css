@@ -24,10 +24,10 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: var(--tertiary-color);
+    overflow: scroll;
 }
 
 .header-container {
@@ -46,15 +46,16 @@ body {
 .header-container h3 {
     font-size: var(--font-size-large);
     color: white;
+
 }
 
+/* Spacer Styling */
 .spacer {
-    height: 0px;
+    height: 80px;
     width: 100%;
-}
+  }
 
 .main-content {
-    position: fixed;
     width: 600px; /* Same width as .container */
     height: 700px; /* Same height as .container */
 }
@@ -107,16 +108,16 @@ body {
 
 
 .container {
-    max-height: 100vh; /* Maximum height to fit the viewport */
     width: 600px;
     height: 700px;
     max-width: 600px;
-    padding: 20px;
+    padding: 15px;
     background-color: var(--white);
     border-radius: var(--border-radius);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     position: fixed;
     overflow: scroll;
+    margin: 10px;
 }
 
 .card {
@@ -125,23 +126,24 @@ body {
     display: flex;
     flex-direction: column; /* Stack elements vertically */
     justify-content: space-between; /* Distribute space between elements */
+    
 }
 
 .card-img {
     width: 100%;
     height: 400px; /* Fixed height for all images */
     object-fit: cover; /* Maintain aspect ratio without distortion */
-    padding: 20px;
+    padding: 15px;
     border-radius: 30px;
 }
 
 .card-body {
-    padding: 15px;
+    padding: 10px;
     text-align: center;
 }
 
-.card-title, .card-text {
-    font-size: 1.5em;
+.card-title{
+    font-size: 24px;
     color: var(--primary-color);
     margin-bottom: 10px;
 }
@@ -149,8 +151,8 @@ body {
 .card-categories {
     color: var(--dark-gray);
     align-items: left;
-    
 }
+
 .category-span{
     border-radius: 4px;
     background-color:slateblue;
@@ -170,53 +172,47 @@ body {
 
 }
 
-.location-label{
+.label{
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 900;
     margin-right: 175px;
     text-align-last: left;
     display: inline-block;
-
+    padding: 5px;
+    text-align: left;
 }
 
-.card .location-distance-block {
-    display: flex; /* Use flexbox for alignment */
+.card .column1-block {
+    display: block; /* Use flexbox for alignment */
     justify-content: space-between; /* Space out the child elements */
-    align-items: center; /* Align items vertically in the center */
-    margin-top: 10px; /* Add some space above this block */
+    float: left;
+    margin-top: 5px; /* Add some space above this block */
+    width: 100%;
+    float:left;
+    text-align: left;
+    
 }
 
-
-.card .row1-span{
-
-    color: var(--dark-gray);
-    padding-top: 5px;
-    /* padding: 2px 6px; */
-    display: inline-block; /* change the display type           */
-    margin: 10px 0;   
-    color: black;
-    background-color: yellow;
+.column2-block {
+    display: block; /* Use flexbox for alignment */
     float: left;
-    width: 150px;
+    margin-top: 5px; /* Add some space above this block */
+    width: 100%;
+    color: black;
+    text-align: left;
+
+}
+
+.card .row-span {
+    display: inline-block;
+    margin: 5px 0;
+    color: black;
+    float: left;
+    width: 170px; /* Adjust width as needed */
     margin-right: 100px;
 }
 
 
-.card .row-span {
-    color: var(--dark-gray);
-    display: inline-block;
-    margin: 10px 0;
-    color: black;
-    float: left;
-    width: 150px; /* Adjust width as needed */
-}
-
-.rating-details-block {
-    display: flex; /* Use flexbox for alignment */
-    justify-content: space-between; /* Space out the child elements */
-    align-items: center; /* Align items vertically in the center */
-    margin-top: 10px; /* Add some space above this block */
-}
 
 /* New class for the ratings and more details block */
 
@@ -319,6 +315,7 @@ body {
     font-size: 20px; /* Adjust font size */
     padding: 10px 80px; /* Adjust padding */
     margin: 0; /* Remove margin */
+    margin-top: 20px;
 }
 
 /* Responsive adjustments */
@@ -332,7 +329,7 @@ body {
 @media screen and (max-width: 480px) {
     .button-container .btn {
         font-size: 16px; /* Even smaller font size for very small screens */
-        padding: 5px 10px; /* Reduced padding for very small screens */
+        padding: 6px 12px; /* Reduced padding for very small screens */
     }
 }
 

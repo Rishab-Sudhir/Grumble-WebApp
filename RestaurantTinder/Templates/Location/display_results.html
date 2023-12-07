@@ -16,6 +16,7 @@
     </div>
 
     <div class="spacer"></div> 
+
     <div class="main-content">
 
     <div id="end-of-list" class="overlay" style="display: none;">
@@ -56,34 +57,34 @@
                                         {% endfor %} 
                                         </div>
                                     
-                                        <div class = "location-distance-block" >
-                                            <!-- <span class="location-label" >Location:</span>
-                                            <span class="location-label">Distance:</span> -->
-                                            <br>
+                                        <div class = "column2-block" >
+                                        
                                             <span class="row-span">
-                                                <p class="location-label">Location:</p>
-                                                <p>{{ business.location.display_address|join:", " }}</p>
+                                                <p class="label">Location:</p>
+                                                <p style=" width: 150px; justify-self: left; text-align: left; margin-left:20px;">{{ business.location.display_address|join:", " }}</p>
                                             </span>
-                                            <!-- <p class="location-label">Distance:</p> -->
+                                            
+                                         
                                             <span class="row-span">
-                                                <p class="location-label">Distance:</p>
-                                                <p>{{ business.distance|floatformat:2 }} mi away</p>
+                                                <p class="label">Distance:</p>
+                                                <p style= "margin-left:20px;">{{ business.distance|floatformat:2 }} mi away</p>
                                             </span>
                                         </div>
                                         
 
-                                        <div class = "rating-details-block" >
+                                        <div class = "column2-block" >
                                             <span class="row-span">
-                                                <p class="categories-label">Reviews:</p>
-                                                Based on {{ business.review_count }} reviews
-                                             </span>
-                                                <!-- <a href="{{ business.url }}" class="btn more-details-button">More Details</a> -->
+                                                <p class="label">Reviews:</p>
+                                                <div class="rating-container" data-rating="{{ business.rating }}">
+                                                    <img class="yelp-rating-img" alt="Yelp Rating" style="margin-left:20px;">
+                                                </div>
+                                                <p style="color:#35424a; font-weight:100px; font-size: 14px; text-align: left; margin-left:20px;"> Based on {{ business.review_count }} reviews</p>
+                                            </span>
                                             <span class="row-span">
                                                 <button class = "more-details" onclick="location.href='{{ business.url }}';">More Details</button>
                                             </span>                                      
                                         </div>
 
-                
                             
                                     </div>
                                 </div>
