@@ -8,6 +8,7 @@ from django.http import JsonResponse
 from .models import SavedRestaurant
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
+from location.models import SavedRestaurant
 
 def get_location(request):
     if request.method == 'POST':
