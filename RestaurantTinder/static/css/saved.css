@@ -1,0 +1,47 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f4f4f4; /* Light Gray */
+    color: #35424a; /* Dark Slate Gray */
+    padding: 20px;
+    margin: 0;
+}
+
+.saved-restaurants-header h2 {
+    color: #e8491d; /* Coral */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.saved-restaurants-body {
+    background-color: #ffffff; /* White */
+    border-radius: 4px; /* Border Radius */
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header-container a {
+    text-decoration: none; /* Removes underline */
+    color: initial; /* Sets initial color, change as needed */
+  }
+
+.restaurant-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.restaurant-item {
+    background-color: #ffffff; /* White */
+    border: 1px solid #35424a; /* Dark Slate Gray */
+    border-radius: 4px; /* Border Radius */
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.restaurant-item:hover {
+    background-color: #f4f4f4; /* Light Gray */
+}
+
+.restaurant-name {
+    font-weight: bold;
+}

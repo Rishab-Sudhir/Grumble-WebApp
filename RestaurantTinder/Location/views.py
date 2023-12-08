@@ -13,10 +13,7 @@ from location.models import SavedRestaurant
 def get_location(request):
     if request.method == 'POST':
         location_query = request.POST.get('location')
-        if request.POST.get('radius') == None:
-            radius = 1
-        else:
-            radius = request.POST.get('radius')
+        radius = request.POST.get('radius')
 
         # Call Google Maps Geocoding API
         google_maps_url = 'https://maps.googleapis.com/maps/api/geocode/json'

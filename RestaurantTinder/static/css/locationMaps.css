@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 :root {
     --primary-color: #35424a;  /* Dark Slate Gray */
@@ -29,26 +29,94 @@ body {
     background-color: var(--tertiary-color);
 }
 
+
 /* Header Styling */
 .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: var(--primary-color);
+    height: 50px;
     width: 100%;
-    text-align: center;
-    padding: 0;
-    border-radius: 0px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    border-radius: var(--border-radius);
+    padding: 0 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    
+}
+
+.title-container {
+    margin-left: auto;
+    margin-right: 350px;
+    text-align: center;
+}
+
+.header-container a {
+    text-decoration: none; /* Removes underline */
+    color: initial; /* Sets initial color, change as needed */
   }
   
-  .header-container h3 {
-    font-size: 30px;
-    color: white;
+.header-container h3 {
+    color: var(--white);
+    font-size: var(--font-size-large);
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    width: 100%;
+}
 
-  }
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-buttons button {
+    padding: var(--alert-padding);
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--secondary-color);
+    color: var(--white);
+    cursor: pointer;
+    font-size: var(--font-size-small);
+}
+
+.header-buttons button:hover {
+    background-color: var(--hover-color);
+}
+
+.header-buttons a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+  /* Button Styling */
+.button-container button {
+    padding: var(--alert-padding);
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--secondary-color);
+    color: var(--white);
+    cursor: pointer;
+    font-size: var(--font-size-small);
+}
+
+.button-container button:hover {
+    background-color: var(--hover-color);
+}
+
+.button-container a {
+    color: var(--white);
+    text-decoration: none;
+    display: inline-block;
+    pointer-events: auto; /* Enable clicks on buttons */
+}
+
+
   
   /* Spacer Styling */
   .spacer {
@@ -132,14 +200,17 @@ body {
     background-color: var(--hover-blue);
 }
 
+/* Alert Box Styling */
 .alert {
-    background-color: var(--light-gray);
-    color: var(--dark-gray);
+    width:fit-content;
+    margin: 10px auto;
+    padding: var(--alert-padding);
     border-radius: var(--border-radius);
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid var(--medium-gray);
+    border: var(--border-size) solid var(--secondary-color);
+    background-color: var(--white);
+    text-align: center;
 }
+
 
 .alert strong {
     font-weight: bold;
@@ -149,4 +220,7 @@ body {
     color: var(--dark-gray);
     cursor: pointer;
     font-size: 1.2rem;
+}
+#alert-message {
+    color: black; /* Sets the font color to black */
 }

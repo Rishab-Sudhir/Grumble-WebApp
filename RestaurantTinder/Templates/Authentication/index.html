@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tinder For Restaurants</title>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
   </head>
   <body>
@@ -31,25 +33,31 @@
       </div>
       {% endfor %}
 
-        <div class="header-container">
-            <h3> Tinder For Restaurants </h3>
-        </div>
-
+    
         {% if user.is_authenticated %}
+        <div class="header-container">
+          <h3> Tinder For Restaurants </h3>
+          <div class="header-signout">
+            <button type="submit"> <a href="/signout">Sign Out</a></button>
+        </div>
+      </div>
+
         <div class="email-confirmed">
           <div class="welcome">
-            <h3>Hello {{ fname }}!</h3>
+            <h3 style="font-size: 38px; font-weight: 700; color: white;">COME ON LET'S FIND FOOD!!!!!!</h3>
           </div>
   
             <div class="button-container">
                 <button type="submit"> <a href="location/get_location">Begin Search</a></button>
-                <button type="submit"> <a href="/signout">Sign Out</a></button>
                 <button type="submit"><a href="/saved_restaurants">Saved Restaurants</a></button>
             </div>
         </div>
         {% else %}
+        <div class="header-container">
+          <h3> Tinder For Restaurants </h3>
+        </div>
           <div class="welcome">
-            <h3>Welcome to Tinder for Restaurants!</h3>
+            <h3 style="font-size: 30px; font-weight: 700;">Welcome to Tinder for Restaurants!</h3>
           </div>
         <div class="button-container">
             <button type="submit"><a href="/signup">Sign Up</a></button>

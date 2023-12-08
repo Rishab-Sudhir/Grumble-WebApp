@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Updated Root Variables */
@@ -60,6 +60,16 @@ body, html {
 .header-container h3 {
   font-size: var(--font-size-large);
   color: white;
+}
+
+.header-container a {
+  text-decoration: none; /* Removes underline */
+  color: initial; /* Sets initial color, change as needed */
+}
+
+.header-container a:hover, .header-container a:active {
+  font-weight: bold; /* Makes text bolder on hover or active */
+  color: #ff0000; /* Changes color on hover or active, set to your preferred color */
 }
 
 /* Spacer Styling */

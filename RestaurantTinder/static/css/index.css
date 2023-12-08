@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Root Variables */
@@ -19,18 +19,33 @@
     --white: #ffffff;
 }
 
+
+
 /* Background and Alignment */
 body, html {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--tertiary-color);
+    /* background: var(--tertiary-color); */
     min-height: 100vh;
+
+   /*background stuff*/
+   background: linear-gradient(to bottom right, 
+        #70838b, /* Lightened version of var(--primary-color) */
+        #ed8f72); /* Lightened version of var(--secondary-color) */
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 /* Header Styling */
 .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: var(--primary-color);
     height: 50px;
     width: 100%;
@@ -38,16 +53,61 @@ body, html {
     top: 0;
     left: 0;
     right: 0;
-    text-align: center;
+    padding: 0 10px; /* Add padding for spacing */
     box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    border-radius: var(--border-radius);
 }
 
 .header-container h3 {
     color: var(--white);
     font-size: var(--font-size-large);
-    line-height: 50px; /* Align text vertically */
+    line-height: 50px;
+    margin: 0 auto; /* Center the title */
+    text-align: center;
+    margin-right: 514px;
 }
+
+/* Signout button */
+.header-signout {
+    display: flex;
+    align-items: center;
+}
+
+.header-signout button {
+    padding: var(--alert-padding);
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--secondary-color); /* Coral color */
+    color: var(--white);
+    cursor: pointer;
+    font-size: var(--font-size-small);
+}
+
+.header-signout button:hover {
+    background-color: var(--hover-color); /* Darker Blue for Hover */
+}
+
+.header-signout a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-container h3 {
+        margin-bottom: 10px;
+    }
+
+    .header-signout {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+
 
 /* Alert Box Styling */
 .alert {
@@ -72,6 +132,7 @@ body, html {
     margin-bottom: 30px;
     text-align: center;
     width: fit-content;
+    align-self: center;
 
 }
 
@@ -82,6 +143,7 @@ body, html {
     justify-content: center;
     gap: 20px;
     margin-top: 20px;
+    pointer-events: auto; /* Enable clicks on buttons */
     pointer-events: auto; /* Enable clicks on buttons */
 }
 
@@ -94,10 +156,12 @@ body, html {
     color: var(--white);
     cursor: pointer;
     font-size: var(--font-size-small);
+    pointer-events: auto; /* Enable clicks on buttons */
 }
 
 .button-container button:hover {
     background-color: var(--hover-color);
+    pointer-events: auto; /* Enable clicks on buttons */
 }
 
 .button-container a {
