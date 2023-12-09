@@ -1,4 +1,4 @@
-# CS411-Project
+# Grumble - CS-411-Project
 Grumble - Tinder For Restaurants 
 
 A simple project for a software engineering class. In this project we implemented a Signup/Signin page with a confirmation email. Then after that we implemented a location/filter page in which 
