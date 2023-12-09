@@ -36,7 +36,7 @@
     
         {% if user.is_authenticated %}
         <div class="header-container">
-          <h3> Tinder For Restaurants </h3>
+          <h3 class="header-auth"> Tinder For Restaurants </h3>
           <div class="header-signout">
             <button type="submit"> <a href="/signout">Sign Out</a></button>
         </div>
@@ -54,10 +54,10 @@
         </div>
         {% else %}
         <div class="header-container">
-          <h3> Tinder For Restaurants </h3>
+          <h3 class="header-noauth"> Tinder For Restaurants </h3>
         </div>
           <div class="welcome">
-            <h3 style="font-size: 30px; font-weight: 700;">Welcome to Tinder for Restaurants!</h3>
+            <h3 style="font-size: 30px; font-weight: 700; color: white;">Welcome to Tinder for Restaurants!</h3>
           </div>
         <div class="button-container">
             <button type="submit"><a href="/signup">Sign Up</a></button>
