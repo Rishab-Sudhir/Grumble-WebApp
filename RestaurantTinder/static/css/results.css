@@ -117,7 +117,7 @@ body {
 
 /* Spacer Styling */
 .spacer {
-    height: 10px;
+    height: 30px;
     width: 100%;
   }
 
@@ -151,12 +151,14 @@ body {
     margin-bottom: 20px; /* Space between message and buttons */
     font-size: 19px; /* Slightly larger text */
     text-align: center; /* Centered text */
+    gap: 30px;
 }
 
 .overlay .btn-container {
     display: absolute;
     justify-content: center;
     gap: 20px; /* Space between buttons */
+
 }
 
 .overlay .btn {
@@ -164,13 +166,21 @@ body {
     font-size: 1em; /* Standard font size */
     margin: 5px;
     width: fit-content; /* Adjust width to content */
+    pointer-events: auto; /* Enable clicks on buttons */
 }
 
-.overlay .btn-primary, .overlay .btn-success {
+.overlay .btn-change-criteria, .overlay .btn-refresh {
     /* Remove 'flex: 1' to stop buttons from stretching */
     max-width: 200px; /* Maximum width for each button */
     height: fit-content; /* Adjust height to content */
 
+}
+
+.overlay .btn-change-criteria a {
+    color: var(--white);
+    text-decoration: none;
+    width: fit-content;
+    text-align: center;
 }
 
 
@@ -362,51 +372,67 @@ body {
 /* Skip-Save Button Container */
 /* Adjusted Skip-Save Button Container */
 .skip-save-container {
-    position: fixed; /* Keep it at the bottom */
-    bottom: 5px; 
+    bottom: 10px; 
     left: 0;
     right: 0;
     display: flex;
+    position: fixed;
     justify-content: center;
+    justify-self: center;
     gap: 20px;
-    padding: 15px 25px; /* Add some padding */
     z-index: 20; /* Ensure it's above other content */
-    background: var(--tertiary-color); /* Optional: Add a background color */
+    background: yellow; /* Optional: Add a background color */
 }
 
 .skip-save .btn {
     flex: none; /* Remove flex properties */
     font-size: 25px; /* Adjust font size */
-    padding: 10px 70px; /* Adjust padding */
     margin: 0; /* Remove margin */
     margin-top: 10px;
+    
 }
 
-.btn-primary{
-    background-color:var(--secondary-color);
+
+
+.button-container .btn {
+    pointer-events: auto; /* Enable clicks on buttons */
+    position: absolute;
+    padding: 10px 20px; /* Adjust padding as needed */
+    font-size: 30px;
+    gap: 20px;
+}
+
+
+.btn-change-criteria{ 
+    background-color: var(--secondary-color);
     color: var(--white);
-    width: fit-content;
 }
 
-.btn-success {
+.btn-change-criteria:hover {
+    background-color: var(--hover-color);
+}
+
+.btn-refresh, .btn-save {
     background-color: #28a745;
     color: var(--white);
     width: fit-content;
 }
 
-.btn-success:hover {
+.btn-refresh:hover, .btn-save:hover {
     background-color: #28a745;
 }
 
-.btn-secondary {
+
+.btn-skip {
     background-color: #6c757d;
     color: var(--white);
     width: fit-content;
 }
 
-.btn-secondary:hover {
+.btn-skip:hover{
     background-color: #5a6268;
 }
+
 
 .no-results {
     margin-top: 20px;
@@ -414,4 +440,79 @@ body {
     color: var(--primary-color);
     display: center;
 
+}
+
+
+.message-box {
+    position: relative; /* Add relative positioning here */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    max-width: 300px;
+    text-align: center;
+    font-size: 24px;
+    justify-content: space-between;
+}
+
+.message-box span {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.message-box span {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.success {
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    border: 1px solid #f5c6cb;
+}
+
+.close-button {
+    position: absolute; /* Absolute positioning */
+    top: 10px; /* Position from the top of the message box */
+    right: 10px; /* Position from the right of the message box */
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #000; 
+    line-height: 1;
+}
+
+ .view-saved-link {
+    display: block;
+    margin-top: 10px;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 300;
+    text-align: left;
+    font-size: 16px;
+} 
+
+
+/* .view-saved-link {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-decoration: none; /* Removes underline */
+    /* color: initial; /* Sets initial color, change as needed */
+/* } */
+
+.view-saved-link:hover {
+    text-decoration: none;
 }

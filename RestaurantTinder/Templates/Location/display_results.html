@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/results.css' %}">
 </head>
 <body>
-    < <div class="header-container">
+     <div class="header-container">
         <div class="title-container">
             <a href='../..'><h3> Tinder For Restaurants </h3></a>
         </div>
@@ -28,8 +28,8 @@
     <div id="end-of-list" class="overlay" style="display: none;">
         <p>You have viewed all restaurants fitting your criteria.</p>
         <div class="btn-container">
-            <a href="{% url 'search_restaurants' %}" class="btn btn-primary">Change Criteria</a>
-            <button onclick="window.location.reload();" class="btn btn-success">Refresh</button>
+            <button class="btn btn-change-criteria"><a href="{% url 'search_restaurants' %}">Change Criteria</a></button>
+            <button onclick="window.location.reload();" class="btn btn-refresh">Refresh</button>
         </div>
     </div>
       
@@ -106,22 +106,20 @@
             {% if forloop.last %}
                 <div class="end-of-list">
                     <p>You have viewed all restaurants fitting your criteria.</p>
-                    <a href="{% url 'your_filter_page_url_name' %}" class="btn btn-primary">Change Criteria</a>
-                    <button onclick="window.location.reload();" class="btn btn-success">Refresh</button>
+                    <button class="btn-change-criteria"><a href="{% url 'search_restaurants' %}">Change Criteria</a></button>
+                    <button onclick="window.location.reload();" class="btn-refresh">Refresh</button>
                 </div>
             {% endif %}
-            
-            <!-- Buttons for saving a restaurant or skipping to the next -->
-            <div class="skip-save-container">
-                <button id="save" class="btn btn-success">Save</button>
-                <button id="skip" class="btn btn-secondary">Skip</button>
-            </div>
-
         {% else %}
-            <div class="no-results" style=" align-self:center; padding: 10px; ">
+            <div class="no-results" style=" align-self:center; padding: 10px;">
                 <p>No results found. Try changing your filters.</p>
             </div>
         {% endif %}
+    </div>
+    <!-- Buttons for saving a restaurant or skipping to the next -->
+    <div class="skip-save-container">
+        <button id="save" class="btn btn-save">Save</button>
+        <button id="skip" class="btn btn-skip">Skip</button>
     </div>
     
     <script src="{% static 'js/results.js' %}"></script>

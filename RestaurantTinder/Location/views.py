@@ -82,7 +82,7 @@ def save_restaurant(request):
         yelp_id = data["yelp_id"]
         name = data["name"]
         categories = data["categories"]
-        #categoriesList = ', '.join(d['title'] for d in categories)
+        # categoriesList = ', '.join(d['title'] for d in categories)
         #categories_json = json.loads(categoriesList)  # Convert string to JSON if necessary
         rating = data["rating"]
         price = data["price"]
@@ -107,7 +107,7 @@ def save_restaurant(request):
             )
             return JsonResponse({'status': 'success', 'msg': 'Restaurant saved'}, status=201)
         else:
-            return JsonResponse({'status': 'error', 'msg': 'Restaurant already saved'}, status=200)
+            return JsonResponse({'status': 'already_saved', 'msg': 'Restaurant already saved'}, status=200)
     except KeyError as e:
         return JsonResponse({'status': 'error', 'msg': f'Missing data: {e}'}, status=400)
     except Exception as e:

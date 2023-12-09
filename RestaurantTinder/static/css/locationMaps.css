@@ -57,7 +57,7 @@ body {
     text-decoration: none; /* Removes underline */
     color: initial; /* Sets initial color, change as needed */
   }
-  
+
 .header-container h3 {
     color: var(--white);
     font-size: var(--font-size-large);
@@ -183,7 +183,7 @@ body {
     font-weight: bold;
 }
 
-#search-button {
+/* .search-button {
     width: 100%;
     padding: 12px;
     margin-top: 15px;
@@ -193,11 +193,25 @@ body {
     border-radius: var(--border-radius);
     cursor: pointer;
     transition: background-color 0.3s;
+    pointer-events: auto; /* Enable clicks on buttons }*/
+/* .search-button:hover {
+    background-color: var(--hover-color);
+    pointer-events: auto; /* Enable clicks on buttons }*/
+.search button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--secondary-color);
+    color: var(--white);
+    cursor: pointer;
+    transition: background-color 0.3s;
     pointer-events: auto; /* Enable clicks on buttons */
 }
 
-#search-button:hover {
-    background-color: var(--hover-blue);
+.search button[type="submit"]:hover {
+    background-color: var(--hover-color);
+    pointer-events: auto; /* Enable clicks on buttons */
 }
 
 /* Alert Box Styling */
