@@ -1,5 +1,5 @@
 # CS411-Project
-Tinder For restaurants 
+Tinder For Restaurants 
 
 A simple project for a software engineering class. In this project we implemented a Signup/Signin page with a confirmation email. Then after that we implemented a location/filter page in which 
 we hit the google maps api to get the longitude and latitude for a users location. Then we ask for more filters (such as price, categories(of restaurants), and whether its open right now), with
