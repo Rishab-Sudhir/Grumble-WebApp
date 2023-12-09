@@ -228,4 +228,14 @@ h2 {
     height: auto;
 }
 
+.no-results {
+    margin-top: 20px;
+    font-size: var(--font-size-large);
+    color: var(--secondary-color);
+    display: center;
+    align-self: center;
+    justify-self: center;
+
+}
+
 

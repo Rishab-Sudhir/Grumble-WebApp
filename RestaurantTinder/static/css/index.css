@@ -58,7 +58,7 @@ body, html {
     text-align: center;
 }
 
-.header-container h3 {
+.header-auth {
     color: var(--white);
     font-size: var(--font-size-large);
     line-height: 50px;
@@ -66,6 +66,15 @@ body, html {
     align-self: center;
     justify-self: center;
     margin-left: 551px;
+}
+
+.header-noauth {
+    color: var(--white);
+    font-size: var(--font-size-large);
+    line-height: 50px;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
 }
 
 .header-title {
