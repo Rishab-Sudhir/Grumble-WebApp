@@ -14,7 +14,10 @@ from .utils import get_yelp_categories
 def get_location(request):
     if request.method == 'POST':
         location_query = request.POST.get('location')
-        radius = request.POST.get('radius')
+        if request.POST.get('radius') == None:
+            radius = 1
+        else:
+            radius = request.POST.get('radius')
 
         # Call Google Maps Geocoding API
         google_maps_url = 'https://maps.googleapis.com/maps/api/geocode/json'
@@ -83,15 +86,9 @@ def save_restaurant(request):
         yelp_id = data["yelp_id"]
         name = data["name"]
         categories = data["categories"]
-
-        # Fetch categories from Yelp API
-        yelp_categories = get_yelp_categories()
-
-        # Find the categories that match the ones returned from the front-end
-        categories_to_save = [cat for cat in yelp_categories if cat[0] in data["categories"]]
-
-        # categoriesList = ', '.join(d['title'] for d in categories)
-        # categories_json = json.loads(categoriesList)  # Convert string to JSON if necessary
+        #categoriesList = ', '.join(d['title'] for d in categories)
+        #categories_json = json.loads(categoriesList)  # Convert string to JSON if necessary
+        #categories = data[categories_json]
         rating = data["rating"]
         price = data["price"]
         phone = data["phone"]
@@ -115,7 +112,7 @@ def save_restaurant(request):
             )
             return JsonResponse({'status': 'success', 'msg': 'Restaurant saved'}, status=201)
         else:
-            return JsonResponse({'status': 'already_saved', 'msg': 'Restaurant already saved'}, status=200)
+            return JsonResponse({'status': 'error', 'msg': 'Restaurant already saved'}, status=200)
     except KeyError as e:
         return JsonResponse({'status': 'error', 'msg': f'Missing data: {e}'}, status=400)
     except Exception as e:
