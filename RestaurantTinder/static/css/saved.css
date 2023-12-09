@@ -110,6 +110,12 @@ h2 {
     justify-self: self-start;
 }
 
+/* Spacer Styling */
+.spacer {
+    height: 50px;
+    width: 100%;
+  }
+
 
 /* Content Container */
 .content-container {
@@ -121,6 +127,7 @@ h2 {
     flex-direction: column;
     align-items: center; /* Aligns children to the center */
 }
+
 
 
 .restaurant-list {

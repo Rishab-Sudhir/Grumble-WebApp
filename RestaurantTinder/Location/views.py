@@ -101,7 +101,7 @@ def save_restaurant(request):
             SavedRestaurant.objects.create(
                 yelp_id=yelp_id,
                 name=name,
-                categories=categories_to_save,
+                categories=categories,
                 rating=rating,
                 price=price,
                 phone=phone,
