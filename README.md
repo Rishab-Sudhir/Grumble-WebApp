@@ -10,13 +10,3 @@ Rishab - Backend (Python(DJANGO Projects/App))
 API key is visible for simplicities sake, but in a prod environment this would naturally be hidden.
 
 Maha - Frontend (Html CSS)
-
-Lincoln - Frontend (Html CSS)
-
-Progress so far:
-
-Used basic django (in python) for sign in flow and email authorization. 
-
-Created location app (backend)
-
-Currently working on front end using html and css.
