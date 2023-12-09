@@ -4,22 +4,32 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
     <title>Search Restaurants</title>
     <link rel="stylesheet" href="{% static 'css/results.css' %}">
 </head>
 <body>
-    <div class="header-container">
-        <h3> Tinder For Restaurants </h3>
+     <div class="header-container">
+        <div class="title-container">
+            <a href='../..'><h3> Tinder For Restaurants </h3></a>
+        </div>
+        <div class="header-buttons">
+            <button type="submit"><a href="/saved_restaurants">Saved Restaurants</a></button>
+            <button type="submit"><a href="/signout">Sign Out</a></button>
+        </div>
     </div>
 
     <div class="spacer"></div> 
+
     <div class="main-content">
 
     <div id="end-of-list" class="overlay" style="display: none;">
         <p>You have viewed all restaurants fitting your criteria.</p>
         <div class="btn-container">
-            <a href="{% url 'search_restaurants' %}" class="btn btn-primary">Change Criteria</a>
-            <button onclick="window.location.reload();" class="btn btn-success">Refresh</button>
+            <button class="btn btn-change-criteria"><a href="{% url 'search_restaurants' %}">Change Criteria</a></button>
+            <button onclick="window.location.reload();" class="btn btn-refresh">Refresh</button>
         </div>
     </div>
       
@@ -45,25 +55,46 @@
                                         <div class="col-md-4">
                                             <img src="{{ business.image_url }}" class="card-img" alt="{{ business.name }}">
                                         </div>
-                                        <p class="card-text"><small class="text-muted">{{ business.distance|floatformat:2 }} mi away</small></p>
-                                        <p class="card-text">Categories: 
+                                        <div class="card-categories">
+                                            <p class="categories-label">Categories:   </p>
                                             {% for category in business.categories %}
-                                                {{ category.title }}{% if not forloop.last %}, {% endif %}
-                                            {% endfor %}
-                                        </p>
-                                        <p class="card-text">Location: {{ business.location.display_address|join:", " }}</p>
-                                        <p class="card-text">Based on {{ business.review_count }} reviews</p>
-                                        <a href="{{ business.url }}" class="btn btn-primary">More Details</a>
+                                                <span class = "category-span"> 
+                                                    {{category.title}} 
+                                                </span>
+                                                {% if not forloop.last %} {% endif %}
+                                            {% endfor %} 
+                                        </div>
+                                    
+                                        <div class = "column2-block" >
+                                        
+                                            <span class="row-span">
+                                                <p class="label">Location:</p>
+                                                <p style=" width: 150px; justify-self: left; text-align: left; margin-left:20px;">{{ business.location.display_address|join:", " }}</p>
+                                            </span>
+                                            
+                                         
+                                            <span class="row-span">
+                                                <p class="label">Distance:</p>
+                                                <p style= "margin-left:20px;">{{ business.distance|floatformat:2 }} mi away</p>
+                                            </span>
+                                        </div>
+                                        
+
+                                        <div class = "column2-block" >
+                                            <span class="row-span">
+                                                <p class="label">Reviews:</p>
+                                                <div class="rating-container" data-rating="{{ business.rating }}">
+                                                    <img class="yelp-rating-img" alt="Yelp Rating" style="margin-left:20px;">
+                                                </div>
+                                                <p style="color:#35424a; font-weight:100px; font-size: 14px; text-align: left; margin-left:20px; width:100%; margin-top: 2px;"> Based on {{ business.review_count }} reviews</p>
+                                            </span>
+                                            <span class="row-span">
+                                                <button class = "more-details" onclick="location.href='{{ business.url }}';">More Details</button>
+                                            </span>                                      
+                                        </div>
+
+                            
                                     </div>
-                                    <p class="card-text"><small class="text-muted">{{ business.distance|floatformat:2 }} mi away</small></p>
-                                    <p class="card-text">Categories: 
-                                        {% for category in business.categories %}
-                                            {{ category.title }}{% if not forloop.last %}, {% endif %}
-                                        {% endfor %}
-                                    </p>
-                                    <p class="card-text">Location: {{ business.location.display_address|join:", " }}</p>
-                                    <p class="card-text">Based on {{ business.review_count }} reviews</p>
-                                    <a href="{{ business.url }}" class="btn btn-primary">More Details</a>
                                 </div>
                             </div>
                         </div>
@@ -75,22 +106,22 @@
             {% if forloop.last %}
                 <div class="end-of-list">
                     <p>You have viewed all restaurants fitting your criteria.</p>
-                    <a href="{% url 'your_filter_page_url_name' %}" class="btn btn-primary">Change Criteria</a>
-                    <button onclick="window.location.reload();" class="btn btn-success">Refresh</button>
+                    <button class="btn-change-criteria"><a href="{% url 'search_restaurants' %}">Change Criteria</a></button>
+                    <button onclick="window.location.reload();" class="btn-refresh">Refresh</button>
                 </div>
             {% endif %}
-
-            <!-- Buttons for saving a restaurant or skipping to the next -->
-            <div class="button-container">
-                <button id="save" class="btn btn-success">Save</button>
-                <button id="skip" class="btn btn-secondary">Skip</button>
-            </div>
         {% else %}
-            <div class="no-results">
+            <div class="no-results" style=" align-self:center; padding: 10px;">
                 <p>No results found. Try changing your filters.</p>
             </div>
         {% endif %}
     </div>
+    <!-- Buttons for saving a restaurant or skipping to the next -->
+    <div class="skip-save-container">
+        <button id="save" class="btn btn-save">Save</button>
+        <button id="skip" class="btn btn-skip">Skip</button>
+    </div>
+    
     <script src="{% static 'js/results.js' %}"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Updated Root Variables */
@@ -62,6 +62,11 @@ body, html {
   color: white;
 }
 
+.header-container a {
+  text-decoration: none; /* Removes underline */
+  color: initial; /* Sets initial color, change as needed */
+}
+
 /* Spacer Styling */
 .spacer {
   height: 50px;
@@ -109,10 +114,12 @@ form button[type="submit"] {
   background-color: var(--secondary-color);
   color: var(--white);
   cursor: pointer;
+  pointer-events: auto; /* Enable clicks on buttons */
 }
 
 form button[type="submit"]:hover {
   background-color: var(--hover-color);
+  pointer-events: auto; /* Enable clicks on buttons */
 }
 
 .navigation-link {

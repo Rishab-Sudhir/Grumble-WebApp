@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 :root {
@@ -17,46 +17,114 @@
     --hover-color: #003d82;    /* Darker Blue for Hover */
     --white: #ffffff;
 }
+/* Alert Box Styling */
+.alert {
+    width:fit-content;
+    margin: 10px auto;
+    padding: var(--alert-padding);
+    border-radius: var(--border-radius);
+    border: var(--border-size) solid var(--secondary-color);
+    background-color: var(--white);
+    text-align: center;
+}
+
 
 body {
-    overflow: hidden;
     font-family: var(--font-family);
     margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: var(--tertiary-color);
+    overflow: scroll;
+    overflow-y: auto; /* Allow vertical scrolling */
+    padding-bottom: 80px; /* Add padding to the bottom */ 
+    padding: 0;
+    justify-content: center;  
 }
 
+/* Header Styling */
 .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: var(--primary-color);
+    height: 50px;
     width: 100%;
-    text-align: center;
-    padding: 10px 0;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    border-radius: var(--border-radius);
+    padding: 0 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-decoration: none; /* Removes underline */
+    color: initial; /* Sets initial color, change as needed */
+}
+
+.header-container a {
+    text-decoration: none; /* Removes underline */
+    color: initial; /* Sets initial color, change as needed */
+  }
+
+.title-container {
+    margin-left: auto;
+    margin-right: 350px;
+    text-align: center;
 }
 
 .header-container h3 {
+    color: var(--white);
     font-size: var(--font-size-large);
-    color: white;
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    align-items: center;
+    align-self: center;
 }
 
-.spacer {
-    height: 0px;
-    width: 100%;
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
 }
+
+.header-buttons button {
+    padding: var(--alert-padding);
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--secondary-color);
+    color: var(--white);
+    cursor: pointer;
+    font-size: var(--font-size-small);
+    width: fit-content;
+}
+
+.header-buttons button:hover {
+    background-color: var(--hover-color);
+    width: fit-content;
+}
+
+.header-buttons a {
+    color: var(--white);
+    text-decoration: none;
+    width: fit-content;
+    text-align: center;
+}
+
+
+
+/* Spacer Styling */
+.spacer {
+    height: 30px;
+    width: 100%;
+  }
 
 .main-content {
-    position: relative;
-    width: 600px; /* Same width as .container */
-    height: 500px; /* Same height as .container */
+    width: 600px; /* Control the width as needed */
+    margin: 30px auto 20px; /* Adjust top margin to account for the header */
+    padding-bottom: 60px;
 }
 
 .container.blur {
@@ -83,12 +151,14 @@ body {
     margin-bottom: 20px; /* Space between message and buttons */
     font-size: 19px; /* Slightly larger text */
     text-align: center; /* Centered text */
+    gap: 30px;
 }
 
 .overlay .btn-container {
-    display: flex;
+    display: absolute;
     justify-content: center;
     gap: 20px; /* Space between buttons */
+
 }
 
 .overlay .btn {
@@ -96,85 +166,232 @@ body {
     font-size: 1em; /* Standard font size */
     margin: 5px;
     width: fit-content; /* Adjust width to content */
+    pointer-events: auto; /* Enable clicks on buttons */
 }
 
-.overlay .btn-primary, .overlay .btn-success {
+.overlay .btn-change-criteria, .overlay .btn-refresh {
     /* Remove 'flex: 1' to stop buttons from stretching */
     max-width: 200px; /* Maximum width for each button */
     height: fit-content; /* Adjust height to content */
+
+}
+
+.overlay .btn-change-criteria a {
+    color: var(--white);
+    text-decoration: none;
+    width: fit-content;
+    text-align: center;
 }
 
 
 .container {
-    max-height: 100vh; /* Maximum height to fit the viewport */
-    overflow: hidden; /* Hide overflow */
     width: 600px;
-    height: 700px;
     max-width: 600px;
-    padding: 20px;
+    padding: 15px;
     background-color: var(--white);
     border-radius: var(--border-radius);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-    position: relative;
+    margin: 10px auto; /* Center the container and add margin for spacing */
 }
 
 .card {
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: space-between; /* Distribute space between elements */
+    
 }
 
 .card-img {
     width: 100%;
-    height: 400px; /* Fixed height for all images */
+    height: 340px; /* Fixed height for all images */
     object-fit: cover; /* Maintain aspect ratio without distortion */
-    padding: 20px;
+    padding: 15px;
     border-radius: 30px;
 }
 
-
 .card-body {
-    padding: 15px;
+    padding: 10px;
     text-align: center;
 }
 
-.card-title {
-    font-size: 1.5em;
+.card-title{
+    font-size: 24px;
     color: var(--primary-color);
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
-.card-text {
+.card-categories {
     color: var(--dark-gray);
-    margin-bottom: 10px;
+    align-items: left;
+    text-align: left;
 }
 
-.card-buttons {
-    display: flex;
-    justify-content: space-between;
+.category-span{
+    border-radius: 4px;
+    background-color:slateblue;
+    padding: 2px 6px;
+    width: fit-content;
+    display: inline-block; /* change the display type           */
+    /* margin: 10px 0;        apply the needed vertical margins */
+    margin-right: 15px;
+    color: white;
+ }
+
+.card .categories-label{
+    font-size: 18px;
+    font-weight: 700;
+    margin: 5px;
+    display: inline;
+    text-align: left;
+}
+
+.label{
+    font-size: 18px;
+    font-weight: 900;
+    margin-right: 175px;
+    text-align-last: left;
+    display: inline-block;
+    padding: 5px;
+    text-align: left;
+}
+
+.card .column1-block {
+    display: block; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space out the child elements */
+    float: left;
+    margin-top: 5px; /* Add some space above this block */
     width: 100%;
-    padding: 0 15px;
+    float:left;
+    text-align: left;
+    
 }
 
+.column2-block {
+    display: block; /* Use flexbox for alignment */
+    float: left;
+    margin-top: 5px; /* Add some space above this block */
+    width: 100%;
+    color: black;
+    text-align: left;
+
+}
+
+.card .row-span {
+    display: inline-block;
+    margin: 5px 0;
+    color: black;
+    float: left;
+    width: 170px; /* Adjust width as needed */
+    margin-right: 100px;
+}
+
+
+
+/* New class for the ratings and more details block */
+
+
+/* .card .card-location-span{
+    color: var(--dark-gray);
+    padding-top: 5px;
+    margin: 5px;
+    width: 150px;
+    display: inline-block;
+
+}
+
+.card-distance-span {
+    color: var(--dark-gray);
+    padding-top: 5px;
+    margin: 5px;
+    width: 150px;
+    display: inline-block;
+} */
+
+
+
+.card-reviews {
+    color: var(--dark-gray);
+    padding-top: 5px;
+    margin: 5px;
+}
+
+
+
+/* Specific styling for the 'More Details' button */
+.card .more-details {
+    padding: 12px;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--secondary-color);
+    color: var(--white);
+    cursor: pointer;
+    pointer-events: auto; /* Enable clicks on buttons */
+
+    flex: 0 0 auto;
+    font-size: var(--font-size-small);
+    margin: 10px; /* Adjust margin as needed */
+    padding: 10px 20px; /* Adjust padding as needed */
+    text-decoration: none;
+    background-color: var(--secondary-color);
+    color: white;
+    font-weight: bold;
+}
+
+.more-details:hover {
+    background-color: var(--hover-color); /* Color when the button is hovered over */
+    text-decoration: none; /* Continues to ensure no underline on hover */
+}
+
+
+/* Base button styling */
 .btn {
     flex: none;
     padding: var(--alert-padding);
     border-radius: var(--border-radius);
-    text-transform: uppercase;
     font-size: var(--font-size-small);
     cursor: pointer;
-    width: auto;
-    margin: 10px 0;
+    margin: 5px; /* Adjust margin as needed */
+    padding: 10px 20px; /* Adjust padding as needed */
+    text-decoration: none;
 }
 
-.button-container {
-    position: fixed; /* Fixed position to keep buttons on the screen */
-    top: 50%; /* Align vertically at the middle */
+
+/* Specific styling for the 'More Details' button */
+
+
+
+/* Hover effect for 'More Details' button */
+.more-details:hover {
+    background-color: var(--hover-color); /* Color when the button is hovered over */
+    text-decoration: none; /* Continues to ensure no underline on hover */
+}
+
+
+/* Skip-Save Button Container */
+/* Adjusted Skip-Save Button Container */
+.skip-save-container {
+    bottom: 10px; 
     left: 0;
     right: 0;
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    pointer-events: none; /* Allows clicks to pass through when not over buttons */
-} 
+    position: fixed;
+    justify-content: center;
+    justify-self: center;
+    gap: 20px;
+    z-index: 20; /* Ensure it's above other content */
+    background: yellow; /* Optional: Add a background color */
+}
+
+.skip-save .btn {
+    flex: none; /* Remove flex properties */
+    font-size: 25px; /* Adjust font size */
+    margin: 0; /* Remove margin */
+    margin-top: 10px;
+    
+}
+
 
 
 .button-container .btn {
@@ -185,42 +402,37 @@ body {
     gap: 20px;
 }
 
-#save {
-    left: 150px; /* Adjust distance from the left edge */
-}
 
-#skip {
-    right: 150px; /* Adjust distance from the right edge */
-}
-
-.btn-primary {
+.btn-change-criteria{ 
     background-color: var(--secondary-color);
     color: var(--white);
 }
 
-.btn-primary:hover {
+.btn-change-criteria:hover {
     background-color: var(--hover-color);
 }
 
-.btn-success {
+.btn-refresh, .btn-save {
     background-color: #28a745;
     color: var(--white);
     width: fit-content;
 }
 
-.btn-success:hover {
-    background-color: #218838;
+.btn-refresh:hover, .btn-save:hover {
+    background-color: #28a745;
 }
 
-.btn-secondary {
+
+.btn-skip {
     background-color: #6c757d;
     color: var(--white);
     width: fit-content;
 }
 
-.btn-secondary:hover {
+.btn-skip:hover{
     background-color: #5a6268;
 }
+
 
 .no-results {
     margin-top: 20px;
@@ -228,4 +440,79 @@ body {
     color: var(--primary-color);
     display: center;
 
+}
+
+
+.message-box {
+    position: relative; /* Add relative positioning here */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    max-width: 300px;
+    text-align: center;
+    font-size: 24px;
+    justify-content: space-between;
+}
+
+.message-box span {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.message-box span {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.success {
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    border: 1px solid #f5c6cb;
+}
+
+.close-button {
+    position: absolute; /* Absolute positioning */
+    top: 10px; /* Position from the top of the message box */
+    right: 10px; /* Position from the right of the message box */
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #000; 
+    line-height: 1;
+}
+
+ .view-saved-link {
+    display: block;
+    margin-top: 10px;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 300;
+    text-align: left;
+    font-size: 16px;
+} 
+
+
+/* .view-saved-link {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-decoration: none; /* Removes underline */
+    /* color: initial; /* Sets initial color, change as needed */
+/* } */
+
+.view-saved-link:hover {
+    text-decoration: none;
 }

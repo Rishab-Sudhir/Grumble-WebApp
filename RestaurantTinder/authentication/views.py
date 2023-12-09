@@ -10,6 +10,7 @@ from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from . tokens import generate_token
+from location.models import SavedRestaurant
 
 # Create your views here.
 
@@ -145,3 +146,14 @@ def activate(request, uidb64, token):
         return redirect('home')
     else:
         return render(request, 'activation_failed.html')
+    
+
+def saved_restaurants(request):
+    # Ensure the user is logged in
+    if not request.user.is_authenticated:
+        # Redirect to login page or display an error
+        return render(request, "authentication/signin.html")
+    
+    # Get the restaurants saved by the logged-in user
+    restaurants = SavedRestaurant.objects.filter(user=request.user)
+    return render(request, 'authentication/saved_restaurants.html', {'restaurants': restaurants})

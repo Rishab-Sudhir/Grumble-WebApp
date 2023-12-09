@@ -8,14 +8,12 @@ from django.http import JsonResponse
 from .models import SavedRestaurant
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
+from location.models import SavedRestaurant
 
 def get_location(request):
     if request.method == 'POST':
         location_query = request.POST.get('location')
-        if request.POST.get('radius') == None:
-            radius = 1
-        else:
-            radius = request.POST.get('radius')
+        radius = request.POST.get('radius')
 
         # Call Google Maps Geocoding API
         google_maps_url = 'https://maps.googleapis.com/maps/api/geocode/json'
@@ -84,7 +82,7 @@ def save_restaurant(request):
         yelp_id = data["yelp_id"]
         name = data["name"]
         categories = data["categories"]
-        #categoriesList = ', '.join(d['title'] for d in categories)
+        # categoriesList = ', '.join(d['title'] for d in categories)
         #categories_json = json.loads(categoriesList)  # Convert string to JSON if necessary
         rating = data["rating"]
         price = data["price"]
@@ -109,7 +107,7 @@ def save_restaurant(request):
             )
             return JsonResponse({'status': 'success', 'msg': 'Restaurant saved'}, status=201)
         else:
-            return JsonResponse({'status': 'error', 'msg': 'Restaurant already saved'}, status=200)
+            return JsonResponse({'status': 'already_saved', 'msg': 'Restaurant already saved'}, status=200)
     except KeyError as e:
         return JsonResponse({'status': 'error', 'msg': f'Missing data: {e}'}, status=400)
     except Exception as e:

@@ -6,11 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Restaurants</title>
     <!-- Add links to your CSS files here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/search.css' %}">
 </head>
 <body>
     <div class="header-container">
-        <a href=""><h3> Tinder For Restaurants </h3></a>
+        <div class="title-container">
+            <a href='../..'><h3> Tinder For Restaurants </h3></a>
+        </div>
+        <div class="header-buttons">
+            <button type="submit"><a href="/saved_restaurants">Saved Restaurants</a></button>
+            <button type="submit"><a href="/signout">Sign Out</a></button>
+        </div>
     </div>
 
     <div class="spacer"></div> 

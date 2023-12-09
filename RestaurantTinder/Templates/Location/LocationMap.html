@@ -6,33 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Finder</title>
     <link rel="stylesheet" href="{% static 'css/locationMaps.css' %}">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
 </head>
 <body>
 
 
-      <!-- Alert Box (Initially Hidden) -->
+    <!-- Alert Box (Initially Hidden) -->
     <div id="alert-box" class="alert" style="display: none;">
         <strong>Message:</strong> <span id="alert-message">Alert Message Here</span>
         <button type="button" class="close" aria-label="Close">
             <span aria-hidden="true"> &times; </span>
         </button>
     </div>
-  
-      <!-- Main Content -->
-      <div id="main-content">
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-            <span class="message-content">{{ message }}</span>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true"> &times; </span>
-            </button>
-        </div>
-        {% endfor %}
 
-        
+    <!-- Main Content -->
+    <div id="main-content">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <span class="message-content">{{ message }}</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"> &times; </span>
+        </button>
+    </div>
+    {% endfor %}
+
+    
+
+    <!-- <div class="header-container">
+        <h3> Tinder For Restaurants </h3>
+        <span class="header-buttons">
+            <div class="button1"> 
+                <button type="submit"><a href="/saved_restaurants">Saved Restaurants</a></button>
+            </div>
+            <div class="button2"> 
+                <button type="submit"><a href="/signout">Sign Out</a></button>
+            </div> --><!--
+            <button type="submit"><a href="/saved_restaurants">Saved Restaurants</a></button>
+            <button type="submit"><a href="/signout">Sign Out</a></button>
+        </span>
+    </div>  -->
+
     <div class="header-container">
-        <a href=""><h3> Tinder For Restaurants </h3></a>
+        <div class="title-container">
+            <a href='../..'><h3> Tinder For Restaurants </h3></a>
+        </div>
+        <div class="header-buttons">
+            <button type="submit"><a href="/saved_restaurants">Saved Restaurants</a></button>
+            <button type="submit"><a href="/signout">Sign Out</a></button>
+        </div>
     </div>
     
     <div class="spacer"></div> 
@@ -54,7 +77,7 @@
                 <div class="input-group">
                     <input type="text" name="location" id="location-input" placeholder="Enter your location">
                 </div>
-                <button type="submit" id="search-button">Continue For More Filters</button>
+                <div class="search"><button type="submit" id="search-button">Continue For More Filters</button></div>
             </form>
             <!-- End of form -->
         </div>

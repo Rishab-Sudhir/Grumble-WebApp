@@ -43,10 +43,13 @@ function positionSuccess(position) {
 function positionError(browserHasGeolocation) {
     hideLoadingMessage();
     const errorMessage = browserHasGeolocation ?
-                         'Error: The Geolocation service failed.' :
+                         'Error: The Geolocation service failed.':
                          'Error: Your browser doesn\'t support geolocation.';
     console.error(errorMessage);
-    infoWindow.setContent(errorMessage);
+
+    const styledErrorMessage = '<div style="color: black;">' + errorMessage + '</div>';
+
+    infoWindow.setContent(styledErrorMessage);
     infoWindow.setPosition(map.getCenter());
     infoWindow.open(map);
 }
@@ -128,6 +131,15 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 // DOM Content Loaded event handling
 document.addEventListener('DOMContentLoaded', function() {
+    var searchForm = document.querySelector('form');
+    searchForm.addEventListener('submit', function(event) {
+        var radiusInput = document.getElementById('search-radius');
+        if (!radiusInput.value) {
+            radiusInput.value = 1; // Set default radius to 1 if not specified
+        }
+    });
+
+
     const mainContent = document.getElementById('main-content');
     const alertBox = document.getElementById('alert-box');
     const alertMessageBox = document.getElementById('alert-message');
@@ -153,5 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initialMessages[0].style.display = 'none';
     }
 });
+
+
 
 window.initMap = initMap;
