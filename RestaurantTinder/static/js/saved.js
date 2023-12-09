@@ -37,32 +37,51 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Delete functionality
-        deleteButton.addEventListener('click', function() {
-            const restaurantId = item.getAttribute('data-id');
-            deleteRestaurant(restaurantId, item);
+        deleteButton.addEventListener('click', function(event) {
+            if (event.target.classList.contains('delete-button')) {
+                const yelpId = event.target.getAttribute('data-yelp-id');
+                deleteRestaurant(yelpId);
+            }
         });
     });
 });
 
-function deleteRestaurant(id, element) {
-    fetch('/delete_restaurant/' + id, {
-        method: 'DELETE',
+
+function deleteRestaurant(yelpId) {
+    fetch('delete_saved_restaurant/', {
+        method: 'POST',
         headers: {
-            'X-CSRFToken': getCookie('csrftoken')
-        }
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken') 
+        },
+        body: JSON.stringify({ yelp_id: yelpId })
     })
-    .then(response => {
-        if (response.ok) {
-            element.remove(); // Remove the restaurant item from the list
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            console.log('Restaurant deleted');
+            // Optionally remove the restaurant from the DOM
+            // document.querySelector(`[data-yelp-id="${yelpId}"]`).remove();
         } else {
-            alert('Error deleting restaurant');
+            console.error('Error:', data.msg);
         }
     })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+    .catch(error => console.error('Error:', error));
 }
 
-function getCookie(name) {
-    // ... existing getCookie function ...
-}
+
+// Function to get CSRF token from cookies (required for POST requests)
+const getCookie = (name) => {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+};

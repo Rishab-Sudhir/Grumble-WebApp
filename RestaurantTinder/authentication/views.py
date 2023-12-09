@@ -1,5 +1,6 @@
+import json
 from django.shortcuts import redirect, render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -11,6 +12,9 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from . tokens import generate_token
 from location.models import SavedRestaurant
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 
 # Create your views here.
 
@@ -156,4 +160,36 @@ def saved_restaurants(request):
     
     # Get the restaurants saved by the logged-in user
     restaurants = SavedRestaurant.objects.filter(user=request.user)
+    print(restaurants)
     return render(request, 'authentication/saved_restaurants.html', {'restaurants': restaurants})
+
+
+
+
+@login_required
+@require_POST
+def delete_saved_restaurant(request):
+    try:
+        # Get the restaurant ID from the request
+        yelp_id = request.POST.get('yelp_id')
+        
+        # data comes in as json so have to extract the id
+        data = json.loads(request.body)
+        yelp_id = data.get('yelp_id')
+        # Filter for the restaurant, ensuring it belongs to the logged-in user
+        queryset = SavedRestaurant.objects.filter(user=request.user, yelp_id=yelp_id)
+
+        # If no matching restaurant is found, return an error message
+        if not queryset.exists():
+            return JsonResponse({'status': 'error', 'msg': 'No restaurant found with the given Yelp ID for the current user.'}, status=404)
+
+        # Delete the restaurant(s) from the queryset
+        queryset.delete()
+        
+        return JsonResponse({'status': 'success', 'msg': 'Restaurant deleted successfully'}, status=200)
+        # Return a success response
+    
+    except Exception as e:
+        # Return an error response
+        return JsonResponse({'status': 'error', 'msg': str(e)}, status=500)
+
