@@ -38,7 +38,7 @@
                     </div>
                     <div class="restaurant-details" style="display: none;">
                         <!-- Detailed info here -->
-                        <p class="category">Categories: {{% for category in restaurant.categories %}{{ category.title }}{% if not forloop.last %}, {% endif %}{% endfor %}}</p>
+                        <p class="category">Categories: {% for category in restaurant.categories %}{{ category.title }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
                         <p class="rating">Rating: {{ restaurant.rating }}</p>
                         <p class="address">Address: {{ restaurant.address }}</p>
                         <p class="phone">Phone: {{ restaurant.phone }}</p>
