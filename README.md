@@ -6,7 +6,10 @@ we hit the google maps api to get the longitude and latitude for a users locatio
 all this information we then hit the yelp api to get a list of retaurants in the vicinity. We then display these restaurants in a tinder like fashion. Users can flick through these results with a skip button. If they wish to save a restaurant for later they can do that, and they view saved restaurants in a different view.
 
 Rishab - Backend (Python(DJANGO Projects/App))
+created the flows for the app and made simple html files associated for them. 
+For more complex functions that required backend integration (eg deleting/saving to sql database) wrote javescript.
 
-API key is visible for simplicities sake, but in a prod environment this would naturally be hidden.
+API key is visible for simplicities till the project is done.
 
 Maha - Frontend (Html CSS)
+Did all the styling and Visual elements of the website using CSS, HTML and Javascript
