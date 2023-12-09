@@ -28,22 +28,22 @@
         <h2>Saved Restaurants</h2>
         <div class="restaurant-list">
             {% for restaurant in restaurants %}
-                <div class="restaurant-item" data-id="{{ restaurant.yelp_id }}">
-                    <img src="{{ restaurant.image_url }}" alt="{{ restaurant.name }}" class="restaurant-image">
-                    <div class="restaurant-info">
-                        <h3>{{ restaurant.name }}</h3>
-                        <p class="price">{{ restaurant.price }}</p>
-                        <button class="details-button">More Details</button>
-                        <button class="delete-button">Delete</button> <!-- Delete button -->
+                <div class="restaurant-item" data-id="{{ restaurant.yelp_id }}" >
+                    <div class="restaurant-header">
+                        <h3 class="restaurant-name">{{ restaurant.name }} - {{ restaurant.price }} </h3>
+                        <span><img src="{{ restaurant.image_url }}" alt="{{ restaurant.name }}" class="restaurant-image"></span>
                     </div>
                     <div class="restaurant-details" style="display: none;">
-                        <!-- Detailed info here -->
-                        <p class="category">Categories: {{% for category in restaurant.categories %}{{ category.title }}{% if not forloop.last %}, {% endif %}{% endfor %}}</p>
-                        <p class="rating">Rating: {{ restaurant.rating }}</p>
-                        <p class="address">Address: {{ restaurant.address }}</p>
-                        <p class="phone">Phone: {{ restaurant.phone }}</p>
+                        <p><span class="display-label">Rating:</span> {{ restaurant.rating }}</p>
+                        <p><span class="display-label">Address:</span> {{ restaurant.address }}</p>
+                        <p><span class="display-label">Phone:</span> {{ restaurant.phone }}</p>
                         <a href="{{ restaurant.yelp_url }}" target="_blank">Visit Yelp Page</a>
                     </div>
+                    <div class="buttons-container">
+                        <button class="details-button">More Details</button>
+                        <button class="delete-button">Delete</button>
+                    </div>
+                </div>
                 </div>
             {% empty %}
                 <p>No saved restaurants.</p>

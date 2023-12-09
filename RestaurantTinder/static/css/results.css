@@ -381,15 +381,13 @@ body {
     justify-self: center;
     gap: 20px;
     z-index: 20; /* Ensure it's above other content */
-    background: yellow; /* Optional: Add a background color */
+    background: var(--tertiary-color); /* Optional: Add a background color */
 }
 
 .skip-save .btn {
     flex: none; /* Remove flex properties */
-    font-size: 25px; /* Adjust font size */
-    margin: 0; /* Remove margin */
+    font-size: 24px; /* Adjust font size */
     margin-top: 10px;
-    
 }
 
 

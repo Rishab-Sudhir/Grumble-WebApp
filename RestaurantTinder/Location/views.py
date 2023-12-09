@@ -9,6 +9,7 @@ from .models import SavedRestaurant
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from location.models import SavedRestaurant
+from .utils import get_yelp_categories
 
 def get_location(request):
     if request.method == 'POST':
@@ -82,8 +83,15 @@ def save_restaurant(request):
         yelp_id = data["yelp_id"]
         name = data["name"]
         categories = data["categories"]
+
+        # Fetch categories from Yelp API
+        yelp_categories = get_yelp_categories()
+
+        # Find the categories that match the ones returned from the front-end
+        categories_to_save = [cat for cat in yelp_categories if cat[0] in data["categories"]]
+
         # categoriesList = ', '.join(d['title'] for d in categories)
-        #categories_json = json.loads(categoriesList)  # Convert string to JSON if necessary
+        # categories_json = json.loads(categoriesList)  # Convert string to JSON if necessary
         rating = data["rating"]
         price = data["price"]
         phone = data["phone"]
@@ -96,7 +104,7 @@ def save_restaurant(request):
             SavedRestaurant.objects.create(
                 yelp_id=yelp_id,
                 name=name,
-                categories=categories,
+                categories=categories_to_save,
                 rating=rating,
                 price=price,
                 phone=phone,

@@ -43,9 +43,9 @@ body, html {
 
 /* Header Styling */
 .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; /* Use flex instead of fixed */
+    justify-content: center; /* Center the content */
+    align-items: center; /* Align items vertically */
     background-color: var(--primary-color);
     height: 50px;
     width: 100%;
@@ -55,21 +55,31 @@ body, html {
     right: 0;
     padding: 0 10px; /* Add padding for spacing */
     box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-align: center;
 }
 
 .header-container h3 {
     color: var(--white);
     font-size: var(--font-size-large);
     line-height: 50px;
-    margin: 0 auto; /* Center the title */
     text-align: center;
-    margin-right: 514px;
+    align-self: center;
+    justify-self: center;
+    margin-left: 551px;
+}
+
+.header-title {
+    flex-grow: 1;
+    text-align: center;
 }
 
 /* Signout button */
 .header-signout {
     display: flex;
-    align-items: center;
+    align-items: right;
+    position: relative;
+    margin-left: auto; /* Push the button to the right */
+    align-self: center; /* Align it vertically */
 }
 
 .header-signout button {
