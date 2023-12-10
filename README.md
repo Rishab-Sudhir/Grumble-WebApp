@@ -9,7 +9,9 @@ Rishab - Backend (Python(DJANGO Projects/App))
 created the flows for the app and made simple html files associated for them. 
 For more complex functions that required backend integration (eg deleting/saving to sql database) wrote javescript.
 
-API key is visible for simplicities till the project is done.
-
 Maha - Frontend (Html CSS)
 Did all the styling and Visual elements of the website using CSS, HTML and Javascript
+
+Figma Link: https://www.figma.com/file/VFstbsn3jOgQGPV8W6FaxE/Tinder-For-Restaurants-Designs?type=design&node-id=0%3A1&mode=design&t=979Iozw6pn24Edsg-1
+
+Link to Video Demo: https://youtu.be/ORMpJoQhjf8
