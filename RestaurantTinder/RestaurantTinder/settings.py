@@ -9,9 +9,17 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 from . info import *
+from dotenv import load_dotenv
+
+# Load the environment variables from .env file
+load_dotenv()
+
+# Accessing the variables
+YELP_API_KEY = os.getenv('YELP_API_KEY')
+GOOGLE_MAPS_API_KEY = os.getenv('GOOGLE_MAPS_API_KEY')
 
 SITE_ID = 1
 
