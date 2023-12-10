@@ -26,7 +26,7 @@ body, html {
   align-items: center;
   justify-content: start;
   background: var(--tertiary-color);
-  padding: 20px;
+  padding: 0;
 }
 
 /* Alert Messages */
@@ -41,30 +41,43 @@ body, html {
   font-size: var(--font-size-small);
 }
 
+
+/* Header Styling */
 /* Header Styling */
 .header-container {
+  display: block; /* Use flex instead of fixed */
   background-color: var(--primary-color);
+  height: 50px;
   width: 100%;
-  text-align: center;
-  padding: 10px 0;
-  border-radius: 0px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 50px;
-  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-align: center;
+  align-items: center;
 }
 
 .header-container h3 {
+  color: var(--white);
   font-size: var(--font-size-large);
-  color: white;
+  display: block;
+  position: relative;
+  align-self: center;
+  text-align: center;
+  align-items: center;
+  justify-self: center;
+  line-height: 50px;
 }
 
 .header-container a {
   text-decoration: none; /* Removes underline */
-  color: initial; /* Sets initial color, change as needed */
+  color: white; /* Sets initial color, change as needed */
+}
+
+.header-container a:hover, .header-container a:active {
+  font-weight: bold; /* Makes text bolder on hover or active */
+  color: #ff0000; /* Changes color on hover or active, set to your preferred color */
 }
 
 /* Spacer Styling */

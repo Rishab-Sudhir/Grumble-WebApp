@@ -43,13 +43,11 @@ body, html {
 
 /* Header Styling */
 .header-container {
-    display: flex; /* Use flex instead of fixed */
-    justify-content: center; /* Center the content */
-    align-items: center; /* Align items vertically */
+    display: block; /* Use flex instead of fixed */
     background-color: var(--primary-color);
     height: 50px;
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -58,14 +56,21 @@ body, html {
     text-align: center;
 }
 
+
+
 .header-auth {
     color: var(--white);
     font-size: var(--font-size-large);
     line-height: 50px;
+
+    position: relative;
     text-align: center;
     align-self: center;
     justify-self: center;
-    margin-left: 551px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 
 .header-noauth {
@@ -89,6 +94,14 @@ body, html {
     position: relative;
     margin-left: auto; /* Push the button to the right */
     align-self: center; /* Align it vertically */
+
+    display: block;
+    gap: 10px;
+    z-index: 1;
+    top: 5px;
+    right: 5px;
+    position: fixed;
+    
 }
 
 .header-signout button {

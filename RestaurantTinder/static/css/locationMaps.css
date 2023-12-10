@@ -32,89 +32,72 @@ body {
 
 /* Header Styling */
 .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block; /* Use flex instead of fixed */
     background-color: var(--primary-color);
     height: 50px;
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    padding: 0 10px;
+    padding: 0 10px; /* Add padding for spacing */
     box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    
-}
-
-.title-container {
-    margin-left: auto;
-    margin-right: 350px;
     text-align: center;
 }
-
-.header-container a {
-    text-decoration: none; /* Removes underline */
-    color: initial; /* Sets initial color, change as needed */
-  }
 
 .header-container h3 {
     color: var(--white);
     font-size: var(--font-size-large);
-    margin: 0;
     line-height: 50px;
+
+    position: relative;
     text-align: center;
-    align-items: center;
     align-self: center;
-    width: 100%;
-}
-
-.header-buttons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.header-buttons button {
-    padding: var(--alert-padding);
-    border: none;
-    border-radius: var(--border-radius);
-    background-color: var(--secondary-color);
-    color: var(--white);
-    cursor: pointer;
-    font-size: var(--font-size-small);
-}
-
-.header-buttons button:hover {
-    background-color: var(--hover-color);
-}
-
-.header-buttons a {
-    color: var(--white);
-    text-decoration: none;
-}
-
-  /* Button Styling */
-.button-container button {
-    padding: var(--alert-padding);
-    border: none;
-    border-radius: var(--border-radius);
-    background-color: var(--secondary-color);
-    color: var(--white);
-    cursor: pointer;
-    font-size: var(--font-size-small);
-}
-
-.button-container button:hover {
-    background-color: var(--hover-color);
-}
-
-.button-container a {
-    color: var(--white);
-    text-decoration: none;
+    justify-self: center;
     display: inline-block;
-    pointer-events: auto; /* Enable clicks on buttons */
+    margin-left: auto;
+    margin-right: auto;
+    
 }
+
+.header-container a:hover, .header-container a:active {
+    font-weight: bold; /* Makes text bolder on hover or active */
+    color: #ff0000; /* Changes color on hover or active, set to your preferred color */
+  }
+/* -------------------------------------- */
+
+  .header-buttons {
+    display: flex;
+    align-items: right;
+    position: relative;
+    margin-left: auto; /* Push the button to the right */
+    align-self: center; /* Align it vertically */
+
+    display: block;
+    gap: 10px;
+    z-index: 1;
+    top: 5px;
+    right: 5px;
+    position: fixed;
+    }
+
+    .header-buttons button {
+        padding: var(--alert-padding);
+        border: none;
+        border-radius: var(--border-radius);
+        background-color: var(--secondary-color);
+        color: var(--white);
+        cursor: pointer;
+        font-size: var(--font-size-small);
+        
+    }
+    
+    .header-buttons a {
+        color: var(--white);
+        text-decoration: none;
+        width: fit-content;
+        text-align: center;
+    }
 
 
   
