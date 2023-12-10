@@ -9,6 +9,7 @@ from .models import SavedRestaurant
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from location.models import SavedRestaurant
+from .utils import get_yelp_categories
 
 def get_location(request):
     if request.method == 'POST':

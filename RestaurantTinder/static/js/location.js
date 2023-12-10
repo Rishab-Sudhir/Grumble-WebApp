@@ -1,67 +1,109 @@
 let map, infoWindow, marker, geocoder;
 
 function initMap() {
-    // Set a default center for the map
-    const defaultLocation = { lat: -34.397, lng: 150.644 };
-
-    // Initialize the map
+    const defaultLocation = { lat: 42.370530, lng: -71.091513 };
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 6,
+        zoom: 8,
         center: defaultLocation,
     });
 
-    // Initialize the Geocoder
     geocoder = new google.maps.Geocoder();
-
-    // Initialize InfoWindow
     infoWindow = new google.maps.InfoWindow();
 
-    // Try to get user's location
+    tryGeolocation();
+    addMapClickListener();
+}
+
+function tryGeolocation() {
+    showLoadingMessage("Generating your location...");
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
-            (position) => {
-                const userLocation = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
-                };
-                map.setCenter(userLocation);
-                infoWindow.setPosition(userLocation);
-                infoWindow.setContent('<div style="color: black;">Your location!</div>');
-                infoWindow.open(map);
-            },
-            () => {
-                handleLocationError(true, infoWindow, map.getCenter());
-            }
+            positionSuccess,
+            positionError,
+            { timeout: 10000 } // Timeout after 10000 milliseconds
         );
     } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, defaultLocation);
+        positionError(false);
     }
+}
 
-    // Event listener for map click
+
+function positionSuccess(position) {
+    hideLoadingMessage();
+    const userLocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+    };
+    setMapToLocation(userLocation, 15);
+    createOrUpdateMarker(userLocation);
+    geocodeLatLng(geocoder, userLocation);
+}
+
+function positionError(browserHasGeolocation) {
+    hideLoadingMessage();
+    const errorMessage = browserHasGeolocation ?
+                         'Error: The Geolocation service failed.':
+                         'Error: Your browser doesn\'t support geolocation.';
+    console.error(errorMessage);
+
+    const styledErrorMessage = '<div style="color: black;">' + errorMessage + '</div>';
+
+    infoWindow.setContent(styledErrorMessage);
+    infoWindow.setPosition(map.getCenter());
+    infoWindow.open(map);
+}
+
+function hideLoadingMessage() {
+    // Implement this function to hide the loading message or spinner
+    document.getElementById('loadingMessage').style.display = 'none';
+}
+
+function showLoadingMessage(message) {
+    // Implement this function to show a loading message or spinner
+    // For example, update the text content of a designated div or show a modal/spinner
+    document.getElementById('loadingMessage').textContent = message;
+    document.getElementById('loadingMessage').style.display = 'block';
+}
+
+
+function setMapToLocation(location, zoomLevel) {
+    map.setCenter(location);
+    map.setZoom(zoomLevel);
+}
+
+function createOrUpdateMarker(position) {
+    if (marker) {
+        marker.setPosition(position);
+    } else {
+        marker = new google.maps.Marker({
+            position: position,
+            map: map,
+        });
+    }
+}
+
+function addMapClickListener() {
     map.addListener('click', function(e) {
         placeMarkerAndPanTo(e.latLng, map);
     });
 }
 
 function placeMarkerAndPanTo(latLng, map) {
-    // Move the marker if it already exists
     if (marker) {
         marker.setPosition(latLng);
     } else {
-        // Create a new marker
         marker = new google.maps.Marker({
             position: latLng,
             map: map,
         });
     }
 
-    // Pan the map to the new marker position
     map.panTo(latLng);
-
-    // Update the input field with the address
     geocodeLatLng(geocoder, latLng);
 }
+
+
 
 function geocodeLatLng(geocoder, latLng) {
     geocoder.geocode({ 'location': latLng }, function(results, status) {
@@ -89,6 +131,15 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 // DOM Content Loaded event handling
 document.addEventListener('DOMContentLoaded', function() {
+    var searchForm = document.querySelector('form');
+    searchForm.addEventListener('submit', function(event) {
+        var radiusInput = document.getElementById('search-radius');
+        if (!radiusInput.value) {
+            radiusInput.value = 1; // Set default radius to 1 if not specified
+        }
+    });
+
+
     const mainContent = document.getElementById('main-content');
     const alertBox = document.getElementById('alert-box');
     const alertMessageBox = document.getElementById('alert-message');
@@ -115,5 +166,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Make sure to assign the initMap function to window.initMap
+
+
 window.initMap = initMap;

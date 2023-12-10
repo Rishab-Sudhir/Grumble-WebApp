@@ -46,73 +46,80 @@ body {
 
 /* Header Styling */
 .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block; /* Use flex instead of fixed */
     background-color: var(--primary-color);
     height: 50px;
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    padding: 0 10px;
+    padding: 0 10px; /* Add padding for spacing */
     box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    text-decoration: none; /* Removes underline */
-    color: initial; /* Sets initial color, change as needed */
-}
-
-.header-container a {
-    text-decoration: none; /* Removes underline */
-    color: initial; /* Sets initial color, change as needed */
-  }
-
-.title-container {
-    margin-left: auto;
-    margin-right: 350px;
     text-align: center;
 }
 
 .header-container h3 {
     color: var(--white);
     font-size: var(--font-size-large);
-    margin: 0;
     line-height: 50px;
+
+    position: relative;
     text-align: center;
-    align-items: center;
     align-self: center;
+    justify-self: center;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 
-.header-buttons {
+.header-container a:hover, .header-container a:active {
+    font-weight: bold; /* Makes text bolder on hover or active */
+    color: #ff0000; /* Changes color on hover or active, set to your preferred color */
+  }
+/* -------------------------------------- */
+
+  .header-buttons {
     display: flex;
-    align-items: center;
+    align-items: right;
+    position: relative;
+    margin-left: auto; /* Push the button to the right */
+    align-self: center; /* Align it vertically */
+
+    display: block;
     gap: 10px;
-    width: fit-content;
-}
+    z-index: 1;
+    top: 5px;
+    right: 5px;
+    position: fixed;
+    }
 
-.header-buttons button {
-    padding: var(--alert-padding);
-    border: none;
-    border-radius: var(--border-radius);
-    background-color: var(--secondary-color);
-    color: var(--white);
-    cursor: pointer;
-    font-size: var(--font-size-small);
-    width: fit-content;
-}
+    .header-buttons button {
+        padding: var(--alert-padding);
+        border: none;
+        border-radius: var(--border-radius);
+        background-color: var(--secondary-color);
+        color: var(--white);
+        cursor: pointer;
+        font-size: var(--font-size-small);
+        
+    }
+    
+    .header-buttons a {
+        color: var(--white);
+        text-decoration: none;
+        width: fit-content;
+        text-align: center;
+    }
 
-.header-buttons button:hover {
-    background-color: var(--hover-color);
-    width: fit-content;
-}
 
-.header-buttons a {
-    color: var(--white);
-    text-decoration: none;
-    width: fit-content;
-    text-align: center;
-}
-
+  
+  /* Spacer Styling */
+  .spacer {
+    height: 50px;
+    width: 100%;
+  }
 
 
 /* Spacer Styling */
@@ -193,6 +200,10 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     margin: 10px auto; /* Center the container and add margin for spacing */
 }
+
+
+
+
 
 .card {
     width: 100%;
@@ -381,15 +392,13 @@ body {
     justify-self: center;
     gap: 20px;
     z-index: 20; /* Ensure it's above other content */
-    background: yellow; /* Optional: Add a background color */
+    background: var(--tertiary-color); /* Optional: Add a background color */
 }
 
 .skip-save .btn {
     flex: none; /* Remove flex properties */
-    font-size: 25px; /* Adjust font size */
-    margin: 0; /* Remove margin */
+    font-size: 24px; /* Adjust font size */
     margin-top: 10px;
-    
 }
 
 
