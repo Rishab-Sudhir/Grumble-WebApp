@@ -10,6 +10,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from location.models import SavedRestaurant
 from .utils import get_yelp_categories
+from django.conf import settings
 
 def get_location(request):
     if request.method == 'POST':
@@ -25,7 +26,7 @@ def get_location(request):
         google_maps_url = 'https://maps.googleapis.com/maps/api/geocode/json'
         params = {
             'address': location_query,
-            'key': "AIzaSyBvnv5Y_syGDIt6LbOCHzfBWiObd7Rv-WU"
+            'key': settings.GOOGLE_MAPS_API_KEY
         }
         response = requests.get(google_maps_url, params=params)
         if response.status_code == 200:
@@ -51,7 +52,8 @@ def get_location(request):
             return redirect('get_location')
 
     # If not POST or there was an error, render the page with the form again
-    return render(request, 'location/LocationMap.html')
+    context = {'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY}
+    return render(request, 'location/LocationMap.html', context)
 
 def search_restaurants(request):
     if request.method == 'POST':
